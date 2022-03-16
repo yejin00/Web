@@ -1,0 +1,231 @@
+
+header {  
+    height: 50px;
+    padding: 1rem;
+    color: white;
+    background: #1F3256;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .sentence{
+    font-size: 15px;
+    width: 200;
+    height: 100;
+    background-color:rgba(255, 255, 255, 0.6);
+    border-radius: 30px;
+    padding: 1%;
+    margin-top: 20px;
+    margin-left: 150px;
+    margin-right: 150px;
+    margin-bottom: 40px;
+    text-align: center;
+  }
+  
+  
+  
+  /* 각 작물 아이콘 코드 시작 */
+  
+  /* 기본아이콘 */
+  .icon {
+    position:absolute;
+    background: white;
+    color:#1F3256;
+    cursor: pointer;
+    border-radius: 50%;
+    height: 150px;
+    width: 150px;
+    line-height: 150px;
+    text-align: center;
+    font-size: 2.75em;
+    font-weight: bold;
+    transition: 0.24s 0.2s;
+  }
+  
+  .bicon {
+    margin-left: 15%;
+  }
+  
+  .micon {
+    margin-left: 35%;    
+  }
+  
+  .oicon {
+    margin-left: 55%; 
+  }
+  
+  .gicon {
+    margin-left: 75%;    
+  }
+  
+    
+    /* 마우스 올리면 나오는 색깔 */
+    .icon:hover {
+      background: rgba(255, 255, 255, 0.75);
+    }
+  
+    .bicon:hover {
+      background: url('images/cabbage.png') no-repeat;
+      background-color: rgba(255, 255, 255, 0.75);    
+    }
+  
+    .micon:hover {
+      background: url('images/radish.png') no-repeat;
+      background-color: rgba(255, 255, 255, 0.75);    
+    }
+  
+    .oicon:hover {
+      background: url('images/onion.png') no-repeat;
+      background-color: rgba(255, 255, 255, 0.75);    
+    }
+  
+    .gicon:hover {
+      background: url('images/chili.png') no-repeat;
+      background-color: rgba(255, 255, 255, 0.75);    
+    }
+    
+    /* 하위메뉴들 */
+    .menu {
+      position: absolute;
+      top: -60px;
+      left: -60px;
+      border: 130px solid transparent;
+      cursor: default;
+      border-radius: 50%;
+      transform: scale(0);
+      transition: transform 1.4s 0.07s;
+      z-index: -5;
+    }
+    
+    /* 아이콘들 펼쳐지기 위해 */
+    .spread {
+      position: absolute;
+      top: -100px;
+      left: -100px;
+      transform-origin: 110px 110px;
+      transition: all 0.5s 0.1s;
+    }
+  
+    .icon:hover .menu {
+      transition: transform 0.4s 0.08s, z-index 0s 0.5s;
+      transform: scale(1);
+      z-index: 5;
+    }
+    .icon:hover .spread,
+    .icon:hover .unit {
+      transition: all 0.6s;
+    }
+    
+    .icon:hover .spread:nth-child(1) {
+      transition-delay: 0.04s;
+      transform: rotate(125deg);
+    }
+    .icon:hover .spread:nth-child(1) .unit {
+      transition-delay: 0.08s;
+      transform: rotate(595deg);
+    }
+    .icon:hover .spread:nth-child(2) {
+      transition-delay: 0.06s;
+      transform: rotate(165deg);
+    }
+    .icon:hover .spread:nth-child(2) .unit {
+      transition-delay: 0.12s;
+      transform: rotate(555deg);
+    }
+    .icon:hover .spread:nth-child(3) {
+      transition-delay: 0.08s;
+      transform: rotate(205deg);
+    }
+    .icon:hover .spread:nth-child(3) .unit {
+      transition-delay: 0.16s;
+      transform: rotate(515deg);
+    }
+    .icon:hover .spread:nth-child(4) {
+      transition-delay: 0.1s;
+      transform: rotate(245deg);
+    }
+    .icon:hover .spread:nth-child(4) .unit {
+      transition-delay: 0.2s;
+      transform: rotate(475deg);
+    }
+    .icon:hover .spread:nth-child(5) {
+      transition-delay: 0.12s;
+      transform: rotate(285deg);
+    }
+    .icon:hover .spread:nth-child(5) .unit {
+      transition-delay: 0.24s;
+      transform: rotate(435deg);
+    }  
+    /* END .icon:hover */
+  
+    /* 하위메뉴안에 디자인 */
+    .unit {
+      text-align:center;
+      position: absolute;
+      background: white;
+      font-size: 45%;
+      text-decoration: none;
+      width: 60px;
+      height: 60px;
+      line-height: 45px;
+      color: gray;
+      border-radius: 50%;
+      transition: 0.6s;
+      line-height: 60px;
+   
+    }
+    
+    
+    body,
+    a,
+    ul,
+    li {
+      margin: 0;
+      outline: 0;
+      padding: 0;
+      list-style: none;
+    }
+    
+    html,
+    body {
+      height: 100%;
+      min-height: 300px;
+      background: url('images/grass.jpg');
+      background-size:contain;
+    }
+    
+    body {
+      font-family: sans-serif;
+      transform: translate3d(0, 0, 0);
+    }
+    
+    .icon {
+      top: 50%;
+      margin-top: -75px;
+    }
+  
+    /* 각 작물 아이콘 코드 끝 */
+  
+    /* 차트디자인시작 */
+  
+
+    .cc{
+      display: flex;
+      justify-content: space-around;
+    }
+    .chart{
+      background-color: rgba(255, 255, 255);
+      margin-top: 250px;
+      margin-bottom: 100px;
+      border-radius: 20px;
+      padding: 1px;
+    }
+  
+    /* 차트디자인끝 */
+  
+    .mg{
+      margin-top: 600px;
+      opacity: 0;
+    }

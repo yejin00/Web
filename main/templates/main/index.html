@@ -1,0 +1,136 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <title>Crop Forecasting System</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+
+<body>
+
+  <header>
+    <h2>농산물 가격 예측 시스템</h2>
+  </header>
+
+  <!-- <img src="grass.jpg" alt="My Image" width="1263"> -->
+  <nav class="mm">
+  <div class = "sentence">
+    <p>저희 서비스는 농산물에 영향을 미치는 기상상황, 물가지수 등 여러 요인들을 기반으로 농산물의 가격을 예측하여 제공하는 서비스입니다.</p> 
+    <p>제공하는 작물로는 배추, 건고추, 무, 양파가 있으며 추후 가격데이터만 제공된다면 무한으로 작물을 늘릴수도 있습니다.</p>
+  </div>
+
+  <!-- 작물아이콘 시작 -->
+
+  <div class="icon bicon">배추
+      <ul class="menu bmenu">     
+        <li class="spread bspread">
+          <a class="unit bunit" href="{% url 'seoul_cabbage' %}">서울</a>
+        </li>
+    
+        <li class="spread bspread">
+          <a class="unit bunit" href="#">부산</a>
+        </li>
+    
+        <li class="spread bspread">
+          <a class="unit bunit" href="#">대구</a>
+        </li>
+    
+        <li class="spread bspread">
+          <a class="unit bunit" href="#">대전</a>
+        </li>
+    
+        <li class="spread bspread">
+          <a class="unit bunit" href="#">광주</a>
+        </li>     
+      </ul>
+    </div>
+
+    <div class="icon micon">무
+      <ul class="menu mmenu">     
+        <li class="spread mspread">
+          <a class="unit munit" href="#">서울</a>
+        </li>
+    
+        <li class="spread mspread">
+          <a class="unit munit" href="#">부산</a>
+        </li>
+    
+        <li class="spread mspread">
+          <a class="unit munit" href="#">대구</a>
+        </li>
+    
+        <li class="spread mspread">
+          <a class="unit munit" href="#">대전</a>
+        </li>
+    
+        <li class="spread mspread">
+          <a class="unit munit" href="#">광주</a>
+        </li>     
+      </ul>
+    </div>
+
+    <div class="icon oicon">양파
+      <ul class="menu omenu">     
+        <li class="spread ospread">
+          <a class="unit ounit" href="#">서울</a>
+        </li>
+    
+        <li class="spread ospread">
+          <a class="unit ounit" href="#">부산</a>
+        </li>
+    
+        <li class="spread ospread">
+          <a class="unit ounit" href="#">대구</a>
+        </li>
+    
+        <li class="spread ospread">
+          <a class="unit ounit" href="#">대전</a>
+        </li>
+    
+        <li class="spread ospread">
+          <a class="unit ounit" href="#">광주</a>
+        </li>     
+      </ul>
+    </div>
+
+    <div class="icon gicon">건고추
+      <ul class="menu gmenu">     
+        <li class="spread gspread">
+          <a class="unit gunit" href="#">서울</a>
+        </li>
+    
+        <li class="spread gspread">
+          <a class="unit gunit" href="#">부산</a>
+        </li>
+    
+        <li class="spread gspread">
+          <a class="unit gunit" href="#">대구</a>
+        </li>
+    
+        <li class="spread gspread">
+          <a class="unit gunit" href="#">대전</a>
+        </li>
+    
+        <li class="spread gspread">
+          <a class="unit gunit" href="#">광주</a>
+        </li>     
+      </ul>
+    </div>
+
+  <!-- 작물아이콘 끝 -->
+
+  <!-- 차트시작 -->
+  <div class="cc" >
+    <canvas class="chart" id="bchart" width="250" height="250"></canvas>
+    <canvas class="chart" id="mchart" width="250" height="250"></canvas>
+    <canvas class="chart" id="ochart" width="250" height="250"></canvas>
+    <canvas class="chart" id="gchart" width="250" height="250"></canvas>
+    <script type="text/javascript" src="{% static 'js/script.js' %}"></script>
+    </div>
+    </nav>
+</body>
+</html>
