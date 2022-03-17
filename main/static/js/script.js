@@ -1,17 +1,30 @@
+// {/* <script
+//   src="https://code.jquery.com/jquery-3.6.0.min.js"
+//   integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+//   crossorigin="anonymous"></script> */}
+
 var bchartArea = document.getElementById('bchart').getContext('2d');
 var mchartArea = document.getElementById('mchart').getContext('2d');
 var ochartArea = document.getElementById('ochart').getContext('2d');
 var gchartArea = document.getElementById('gchart').getContext('2d');
 
+var high_10 = "{{high_10|safe}}"
+var high_11= "{{high_11|safe}}"
+var high_12= "{{high_12|safe}}"
+
+console.log(high_list);
+
 var bchart = new Chart(bchartArea, {
+    
     type: 'line',
     data: {
         labels: ['전월', '현월', '다음월'],
         datasets: [
             {
                 label: '최대값',
-                //data: high_list,
-                data: [670, 1087, 906],
+                data: high_list,
+                // data: [670, 1087, 906],
+
                 backgroundColor: '#e24f31',
                 borderColor: '#e24f31',
                 borderWidth: 1,
@@ -215,3 +228,19 @@ var gchart = new Chart(gchartArea, {
         },
     }
 });
+
+// $.ajax({
+//     url: '/ajax_method/',
+//     type: "POST",
+//     dataType: "json",
+//     data: {'send_data': 'Send this message'},
+//     success: function(data){
+//         console.log(data);
+//     },beforeSend:function(){
+//         console.log("i am waiting");
+//     },complete:function(){
+//         console.log("i am done");
+//     },error: function (request, status, error) {
+//         console.log('i am failed');
+//     }
+//   });
