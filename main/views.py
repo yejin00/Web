@@ -23,9 +23,9 @@ def index(request):
 
 def test2(request):
     # return render(request, 'main/index.html')
-    high_10 = Cabbage.objects.filter(서울=1, 배추상품=1, 년=2021, 월=10)
-    high_11 = Cabbage.objects.filter(서울=1, 배추상품=1, 년=2021, 월=11)
-    high_12 = Cabbage.objects.filter(서울=1, 배추상품=1, 년=2021, 월=12)
+    high_10 = Cabbage.objects.filter(서울=1, 배추상품=1, 년=2021, 월=10).도매가격
+    high_11 = Cabbage.objects.filter(서울=1, 배추상품=1, 년=2021, 월=11).도매가격
+    high_12 = Cabbage.objects.filter(서울=1, 배추상품=1, 년=2021, 월=12).도매가격
     # high_list = [high_10, high_11, high_12] # chart 연결 목적
     context = {'high_10': high_10, 'high_11' : high_11, 'high_12' : high_12}
     # high_list.append(high_10, high_11, high_12)
