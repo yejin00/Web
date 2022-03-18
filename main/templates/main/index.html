@@ -130,6 +130,229 @@
     <canvas class="chart" id="ochart" width="250" height="250"></canvas>
     <canvas class="chart" id="gchart" width="250" height="250"></canvas>
     <script type="text/javascript" src="{% static 'js/script.js' %}"></script>
+    
+    <script>
+      var cabbage_high_list = {{cabbage_high_list}};
+      var cabbage_middle_list = {{cabbage_middle_list}};
+      var cabbage_mean_list = {{cabbage_mean_list}};
+      var bchart = new Chart(bchartArea, {
+        type: 'line',
+        data: {
+            labels: ['전월', '현월', '다음월'],
+            datasets: [
+                {
+                    label: '최댓값',
+                    data: cabbage_high_list,
+                    backgroundColor: '#e24f31',
+                    borderColor: '#e24f31',
+                    borderWidth: 1,
+                    fill: false
+                },
+                {
+                    label: '예측값',
+                    data: cabbage_mean_list,
+                    backgroundColor: '#60c0ce',
+                    borderColor: '#60c0ce',
+                    borderWidth: 1,
+                    fill: false
+                },
+                {
+                    label: '최저값',
+                    data: cabbage_middle_list,
+                    backgroundColor: '#18b171',
+                    borderColor: '#18b171',
+                    borderWidth: 1,
+                    fill: false
+                }
+            ]
+        },
+        options: {
+            title: {
+                display: true,
+                text: '배추가격'
+            },
+            legend: {
+                position:'bottom',
+                labels: {
+                    boxWidth: 10
+                }
+            },
+            responsive: false,
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true,
+                    }
+                }]
+            },
+        }
+    });
+    var radish_high_list = {{radish_high_list}};
+    var radish_middle_list = {{radish_middle_list}};
+    var radish_mean_list = {{radish_mean_list}};
+    var mchart = new Chart(mchartArea, {
+      type: 'line',
+      data: {
+          labels: ['전월', '현월', '다음월'],
+          datasets: [
+              {
+                  label: '최대값',
+                  data: radish_high_list,
+                  backgroundColor: '#e24f31',
+                  borderColor: '#e24f31',
+                  borderWidth: 1,
+                  fill: false
+              },
+              {
+                  label: '예측값',
+                  data: radish_mean_list,
+                  backgroundColor: '#60c0ce',
+                  borderColor: '#60c0ce',
+                  borderWidth: 1,
+                  fill: false
+              },
+              {
+                  label: '최저값',
+                  data: radish_middle_list,
+                  backgroundColor: '#18b171',
+                  borderColor: '#18b171',
+                  borderWidth: 1,
+                  fill: false
+              }
+          ]
+      },
+      options: {
+          title: {
+              display: true,
+              text: '무가격'
+          },
+          legend: {
+              position:'bottom',
+              labels: {
+                  boxWidth: 10
+              }
+          },
+          responsive: false,
+          scales: {
+              yAxes: [{
+                  ticks: {
+                      beginAtZero: true,
+                  }
+              }]
+          },
+      }
+  });
+  var onion_high_list = {{onion_high_list}};
+  var onion_middle_list = {{onion_middle_list}};
+  var onion_mean_list = {{onion_mean_list}};
+  var ochart = new Chart(ochartArea, {
+      type: 'line',
+      data: {
+          labels: ['전월', '현월', '다음월'],
+          datasets: [
+              {
+                  label: '최대값',
+                  data: onion_high_list,
+                  backgroundColor: '#e24f31',
+                  borderColor: '#e24f31',
+                  borderWidth: 1,
+                  fill: false
+              },
+              {
+                  label: '예측값',
+                  data: onion_mean_list,
+                  backgroundColor: '#60c0ce',
+                  borderColor: '#60c0ce',
+                  borderWidth: 1,
+                  fill: false
+              },
+              {
+                  label: '최저값',
+                  data: onion_middle_list,
+                  backgroundColor: '#18b171',
+                  borderColor: '#18b171',
+                  borderWidth: 1,
+                  fill: false
+              }
+          ]
+      },
+      options: {
+          title: {
+              display: true,
+              text: '양파가격'
+          },
+          legend: {
+              position:'bottom',
+              labels: {
+                  boxWidth: 10
+              }
+          },
+          responsive: false,
+          scales: {
+              yAxes: [{
+                  ticks: {
+                      beginAtZero: true,
+                  }
+              }]
+          },
+      }
+  });
+  var pepper_high_list = {{pepper_high_list}};
+  var pepper_middle_list = {{pepper_middle_list}};
+  var pepper_mean_list = {{pepper_mean_list}};
+  var gchart = new Chart(gchartArea, {
+      type: 'line',
+      data: {
+          labels: ['전월', '현월', '다음월'],
+          datasets: [
+              {
+                  label: '최대값',
+                  data: pepper_high_list,
+                  backgroundColor: '#e24f31',
+                  borderColor: '#e24f31',
+                  borderWidth: 1,
+                  fill: false
+              },
+              {
+                  label: '예측값',
+                  data: pepper_mean_list,
+                  backgroundColor: '#60c0ce',
+                  borderColor: '#60c0ce',
+                  borderWidth: 1,
+                  fill: false
+              },
+              {
+                  label: '최저값',
+                  data: pepper_middle_list,
+                  backgroundColor: '#18b171',
+                  borderColor: '#18b171',
+                  borderWidth: 1,
+                  fill: false
+              }
+          ]
+      },
+      options: {
+          title: {
+              display: true,
+              text: '건고추가격'
+          },
+          legend: {
+              position:'bottom',
+              labels: {
+                  boxWidth: 10
+              }
+          },
+          responsive: false,
+          scales: {
+              yAxes: [{
+                  ticks: {
+                      beginAtZero: true,
+                  }
+              }]
+          },
+      }
+  });
+    </script>
     </div>
     </nav>
 </body>

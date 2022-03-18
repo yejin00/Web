@@ -1,3 +1,4 @@
+from tkinter.tix import Tree
 from django.shortcuts import render
 from .models import Cabbage, Onion, Pepper, Radish
 from .forms import CabbageForm, RadishForm, OnionForm, PepperForm
@@ -10,28 +11,82 @@ def ajax_method(request):
     return JsonResponse(send_message)
 
 def index(request):
-    # return render(request, 'main/index.html')
-    high_10 = Cabbage.objects.filter(서울=1, 배추상품=1, 년=2021, 월=10)
-    high_11 = Cabbage.objects.filter(서울=1, 배추상품=1, 년=2021, 월=11)
-    high_12 = Cabbage.objects.filter(서울=1, 배추상품=1, 년=2021, 월=12)
-    high_list = [high_10, high_11, high_12] # chart 연결 목적
-    # context = {'high_10': high_10, 'high_11' : high_11, 'high_12' : high_12}
-    # high_list.append(high_10, high_11, high_12)
-    # context = {'high_10':high_10, 'high_11':high_11, 'high_12':high_12}
-    context = {'high_list' : high_list}
+    # 배추
+    high_10 = Cabbage.objects.filter(서울=1, 배추상품=1, 년=2021, 월=10).values_list('도매가격', flat=True)[0]
+    high_11 = Cabbage.objects.filter(서울=1, 배추상품=1, 년=2021, 월=11).values_list('도매가격', flat=True)[0]
+    high_12 = Cabbage.objects.filter(서울=1, 배추상품=1, 년=2021, 월=12).values_list('도매가격', flat=True)[0]
+    cabbage_high_list = [high_10, high_11, high_12]
+    middle_10 = Cabbage.objects.filter(부산=1, 배추중품=1, 년=2021, 월=10).values_list('도매가격', flat=True)[0]
+    middle_11 = Cabbage.objects.filter(부산=1, 배추중품=1, 년=2021, 월=11).values_list('도매가격', flat=True)[0]
+    middle_12 = Cabbage.objects.filter(부산=1, 배추중품=1, 년=2021, 월=12).values_list('도매가격', flat=True)[0]
+    cabbage_middle_list = [middle_10, middle_11, middle_12]
+    mean_10 = Cabbage.objects.filter(대전=1, 배추상중=1, 년=2021, 월=10).values_list('도매가격', flat=True)[0]
+    mean_11 = Cabbage.objects.filter(대전=1, 배추상중=1, 년=2021, 월=11).values_list('도매가격', flat=True)[0]
+    mean_12 = Cabbage.objects.filter(대전=1, 배추상중=1, 년=2021, 월=12).values_list('도매가격', flat=True)[0]
+    cabbage_mean_list = [mean_10, mean_11, mean_12]
+    # 건고추
+    high_10 = Pepper.objects.filter(서울=1, 건고추상품=1, 년=2021, 월=10).values_list('도매가격', flat=True)[0]
+    high_11 = Pepper.objects.filter(서울=1, 건고추상품=1, 년=2021, 월=11).values_list('도매가격', flat=True)[0]
+    high_12 = Pepper.objects.filter(서울=1, 건고추상품=1, 년=2021, 월=12).values_list('도매가격', flat=True)[0]
+    pepper_high_list = [high_10, high_11, high_12]
+    middle_10 = Pepper.objects.filter(서울=1, 건고추중품=1, 년=2021, 월=10).values_list('도매가격', flat=True)[0]
+    middle_11 = Pepper.objects.filter(서울=1, 건고추중품=1, 년=2021, 월=11).values_list('도매가격', flat=True)[0]
+    middle_12 = Pepper.objects.filter(서울=1, 건고추중품=1, 년=2021, 월=12).values_list('도매가격', flat=True)[0]
+    pepper_middle_list = [middle_10, middle_11, middle_12]
+    mean_10 = Pepper.objects.filter(서울=1, 건고추상중=1, 년=2021, 월=10).values_list('도매가격', flat=True)[0]
+    mean_11 = Pepper.objects.filter(서울=1, 건고추상중=1, 년=2021, 월=11).values_list('도매가격', flat=True)[0]
+    mean_12 = Pepper.objects.filter(서울=1, 건고추상중=1, 년=2021, 월=12).values_list('도매가격', flat=True)[0]
+    pepper_mean_list = [mean_10, mean_11, mean_12]
+    # 양파
+    high_10 = Onion.objects.filter(서울=1, 양파상품=1, 년=2021, 월=10).values_list('도매가격', flat=True)[0]
+    high_11 = Onion.objects.filter(서울=1, 양파상품=1, 년=2021, 월=11).values_list('도매가격', flat=True)[0]
+    high_12 = Onion.objects.filter(서울=1, 양파상품=1, 년=2021, 월=12).values_list('도매가격', flat=True)[0]
+    onion_high_list = [high_10, high_11, high_12]
+    middle_10 = Onion.objects.filter(서울=1, 양파중품=1, 년=2021, 월=10).values_list('도매가격', flat=True)[0]
+    middle_11 = Onion.objects.filter(서울=1, 양파중품=1, 년=2021, 월=11).values_list('도매가격', flat=True)[0]
+    middle_12 = Onion.objects.filter(서울=1, 양파중품=1, 년=2021, 월=12).values_list('도매가격', flat=True)[0]
+    onion_middle_list = [middle_10, middle_11, middle_12]
+    mean_10 = Onion.objects.filter(서울=1, 양파상중=1, 년=2021, 월=10).values_list('도매가격', flat=True)[0]
+    mean_11 = Onion.objects.filter(서울=1, 양파상중=1, 년=2021, 월=11).values_list('도매가격', flat=True)[0]
+    mean_12 = Onion.objects.filter(서울=1, 양파상중=1, 년=2021, 월=12).values_list('도매가격', flat=True)[0]
+    onion_mean_list = [mean_10, mean_11, mean_12]
+    # 무
+    high_10 = Radish.objects.filter(서울=1, 무상품=1, 년=2021, 월=10).values_list('도매가격', flat=True)[0]
+    high_11 = Radish.objects.filter(서울=1, 무상품=1, 년=2021, 월=11).values_list('도매가격', flat=True)[0]
+    high_12 = Radish.objects.filter(서울=1, 무상품=1, 년=2021, 월=12).values_list('도매가격', flat=True)[0]
+    radish_high_list = [high_10, high_11, high_12]
+    middle_10 = Radish.objects.filter(서울=1, 무중품=1, 년=2021, 월=10).values_list('도매가격', flat=True)[0]
+    middle_11 = Radish.objects.filter(서울=1, 무중품=1, 년=2021, 월=11).values_list('도매가격', flat=True)[0]
+    middle_12 = Radish.objects.filter(서울=1, 무중품=1, 년=2021, 월=12).values_list('도매가격', flat=True)[0]
+    radish_middle_list = [middle_10, middle_11, middle_12]
+    mean_10 = Radish.objects.filter(서울=1, 무상중=1, 년=2021, 월=10).values_list('도매가격', flat=True)[0]
+    mean_11 = Radish.objects.filter(서울=1, 무상중=1, 년=2021, 월=11).values_list('도매가격', flat=True)[0]
+    mean_12 = Radish.objects.filter(서울=1, 무상중=1, 년=2021, 월=12).values_list('도매가격', flat=True)[0]
+    radish_mean_list = [mean_10, mean_11, mean_12]
+    # context = {'pepper_list' : pepper_list, 'onion_list' : onion_list, 'radish_list': radish_list}
+    context = {
+        'cabbage_high_list' : cabbage_high_list, 'cabbage_middle_list' : cabbage_middle_list, 'cabbage_mean_list' : cabbage_mean_list,
+        'pepper_high_list': pepper_high_list, 'pepper_middle_list': pepper_middle_list, 'pepper_mean_list': pepper_mean_list,
+        'onion_high_list': onion_high_list, 'onion_middle_list': onion_middle_list, 'onion_mean_list': onion_mean_list,
+        'radish_high_list': radish_high_list, 'radish_middle_list': radish_middle_list, 'radish_mean_list': radish_mean_list,        
+        }
     return render(request, 'main/index.html', context)
 
 def test2(request):
     # return render(request, 'main/index.html')
-    high_10 = Cabbage.objects.filter(서울=1, 배추상품=1, 년=2021, 월=10).도매가격
-    high_11 = Cabbage.objects.filter(서울=1, 배추상품=1, 년=2021, 월=11).도매가격
-    high_12 = Cabbage.objects.filter(서울=1, 배추상품=1, 년=2021, 월=12).도매가격
-    # high_list = [high_10, high_11, high_12] # chart 연결 목적
-    context = {'high_10': high_10, 'high_11' : high_11, 'high_12' : high_12}
+    high_10 = Cabbage.objects.filter(서울=1, 배추상품=1, 년=2021, 월=10).values_list('도매가격', flat=True)
+    high_11 = Cabbage.objects.filter(서울=1, 배추상품=1, 년=2021, 월=11).values_list('도매가격', flat=True)
+    high_12 = Cabbage.objects.filter(서울=1, 배추상품=1, 년=2021, 월=12).values_list('도매가격', flat=True)
+    high_list = [high_10, high_11, high_12] # chart 연결 목적
+    # context = {'high_10': high_10, 'high_11' : high_11, 'high_12' : high_12}
     # high_list.append(high_10, high_11, high_12)
     # context = {'high_10':high_10, 'high_11':high_11, 'high_12':high_12}
-    # context = {'high_list' : high_list}
-    return render(request, 'main/test2.html', context)
+    # context = {'dtitle1': '메롱', 'high_list' : high_list}
+    return render(request, 'main/test2.html', {
+        'dtitle1': '메롱', 
+        'dtitle2': '빵',
+        'high_list' : high_list
+        })
 
 
 
