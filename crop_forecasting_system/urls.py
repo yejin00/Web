@@ -20,7 +20,6 @@ from main import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name='index'),
-    path('ajax_method/', views.ajax_method, name = 'ajax_method'),
     path('seoul_cabbage/', views.seoul_cabbage, name='seoul_cabbage'),
     path('seoul_radish/', views.seoul_radish, name='seoul_radish'),
     path('seoul_pepper/', views.seoul_pepper, name='seoul_pepper'),

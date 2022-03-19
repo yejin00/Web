@@ -127,3 +127,48 @@ class Radish(models.Model):
         managed = False
         db_table = 'radish'
         
+
+class CabbageMean(models.Model):
+    년 = models.IntegerField(blank=True, null=True)
+    월 = models.IntegerField(blank=True, null=True)
+    상_도매가격 = models.FloatField(blank=True, null=True)
+    중_도매가격 = models.FloatField(blank=True, null=True)
+    상중_도매가격 = models.FloatField(blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'cabbage_mean'
+        
+class OnionMean(models.Model):
+    년 = models.IntegerField(blank=True, null=True)
+    월 = models.IntegerField(blank=True, null=True)
+    상_도매가격 = models.FloatField(blank=True, null=True)
+    중_도매가격 = models.FloatField(blank=True, null=True)
+    상중_도매가격 = models.FloatField(blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'onion_mean'
+        
+class PepperMean(models.Model):
+    년 = models.IntegerField(blank=True, null=True)
+    월 = models.IntegerField(blank=True, null=True)
+    상_도매가격 = models.FloatField(blank=True, null=True)
+    중_도매가격 = models.FloatField(blank=True, null=True)
+    상중_도매가격 = models.FloatField(blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'pepper_mean'
+        
+    
+class RadishMean(models.Model):
+    년 = models.IntegerField(blank=True, null=True)
+    월 = models.IntegerField(blank=True, null=True)
+    상_도매가격 = models.FloatField(blank=True, null=True)
+    중_도매가격 = models.FloatField(blank=True, null=True)
+    상중_도매가격 = models.FloatField(blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'radish_mean'
