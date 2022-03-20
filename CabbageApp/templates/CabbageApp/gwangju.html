@@ -1,0 +1,106 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/0.5.7/chartjs-plugin-annotation.min.js"></script>
+    <link rel="stylesheet" href="{% static 'CabbageApp/css/style.css' %}">
+    <title>Crop Forecasting System</title>
+</head>
+<body>
+    <header>
+        <h2><a class="hd" href="#" onclick="location.href='http://127.0.0.1:8000/'">농산물 가격 예측 시스템</a></h2>
+    </header>
+
+    <div class="icon">배추</div>
+
+    <div class="crop">
+        <a class="btn btnb" onclick="location.href='/CabbageApp/gwangju'">배추</a>
+        <a class="btn btnm" onclick="location.href='/RadishApp/seoul'">무</a>
+        <a class="btn btno" onclick="location.href='/OnionApp/seoul'">양파</a>
+        <a class="btn btng" onclick="location.href='/PepperApp/seoul'">건고추</a>
+
+        <!-- 팝업창띄우기 -->
+        <a title='구체적인 요인값을 입력하면 더 정확한 예측값을 얻을 수 있습니다.' class="openBtn">요인입력</a>
+        <div class="modal hidden">
+        <div class="bg"></div>
+        <div class="modalBox">
+            <form>
+                구체적인 요인값을 입력하면 더 정확한 예측값을 얻을 수 있습니다.<br>
+                 <br>
+                면적 : <input type='text' value='예시입력'/><br>
+                생산량 : <input type='text'/><br>
+                물가지수: <input type='text'/><br>
+                평균기온: <input type='text'/><br>
+                평균최저기온: <input type='text'/><br>
+                평균최고기온: <input type='text'/><br>
+                평균상대습도: <input type='text'/><br>
+                월합강수량: <input type='text'/><br>                
+                총지수 전년동월비: <input type='text'/><br>
+                총지수 전년누계비: <input type='text'/><br>
+                신선식품지수 전년동월비: <input type='text'/><br>
+                신선식품지수 전년누계비: <input type='text'/><br>
+            </form>
+            <div class="lastBtn">
+                <a class="closeBtn">취소</a>
+                <a class="checkBtn">확인</a>
+            </div>
+        </div>
+        </div>
+
+
+
+    </div>
+
+    <div class = "cbody">
+        <div class="place">
+            <a class="pbtn" onclick="location.href='/CabbageApp/seoul'">서울</a>
+            <a class="pbtn"onclick="location.href='/CabbageApp/busan'">부산</a>
+            <a class="pbtn"onclick="location.href='/CabbageApp/daegu'">대구</a>
+            <a class="pbtn"onclick="location.href='/CabbageApp/daejeon'">대전</a>
+            <a class="pbtn pbtng"onclick="location.href='/CabbageApp/gwangju'">광주</a>
+        </div>
+
+        <div class = "crt">
+            <ul class="title">
+                <li class="avg">
+                    <a class="mtitle">품질</a>
+                    <a class="before">전월실제가격</a>
+                    <a class="present">현월예측가격</a>
+                    <a class="cchart">가격예측그래프(1년간)</a>
+                </li>
+            </ul>
+            <ul class="item sj">
+                <li class="avg">
+                    <a class="mtitle in">평균</a>
+                    <a class="before in">5048원/kg</a>
+                    <a class="present in">6025원/kg</a>
+                    <canvas class="cchart cbg" id="canvas" width="450" height="150"></canvas>
+                </li>
+            </ul>
+            <ul class="item s">
+                <li class="avg">
+                    <a class="mtitle in">상품</a>
+                    <a class="before in">6048원/kg</a>
+                    <a class="present in">7025원/kg</a>
+                    <canvas class="cchart cbg" id="hcanvas" width="450" height="150"></canvas>
+                </li>
+            </ul>
+            <ul class="item j">
+                <li class="avg">
+                    <a class="mtitle in">중품</a>
+                    <a class="before in">4048원/kg</a>
+                    <a class="present in">5025원/kg</a>
+                    <canvas class="cchart cbg" id="mcanvas" width="450" height="150"></canvas>
+                    <script type="text/javascript" src="{% static 'CabbageApp/js/script.js' %}"></script>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+    
+
+</body>
+</html>

@@ -32,6 +32,10 @@ ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
     'main',
+    'CabbageApp',
+    # 'RadishApp',
+    # 'OnionApp',
+    'PepperApp',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -76,18 +80,24 @@ WSGI_APPLICATION = 'crop_forecasting_system.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'share',
-        'USER': 'sang2',
-        'PASSWORD': '8888',
-        'HOST': '192.168.0.8',
-        'PORT': '3306',
+        # 'ENGINE': 'django.db.backends.mysql',
+        # 'NAME': 'share',
+        # 'USER': 'sang2',
+        # 'PASSWORD': '8888',
+        # 'HOST': '192.168.0.8',
+        # 'PORT': '3306',
         # 'ENGINE': 'django.db.backends.mysql',
         # 'NAME': 'share',
         # 'USER': 'cafe22',
         # 'PASSWORD': '1234',
         # 'HOST': '172.30.1.3',
         # 'PORT': '3306',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'share',
+        'USER': 'root',
+        'PASSWORD': 'jooys2757',
+        'HOST': 'localhost',
+        'PORT': '3306',
     }
 }
 
@@ -126,7 +136,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
