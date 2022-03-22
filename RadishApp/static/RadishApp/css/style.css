@@ -47,7 +47,7 @@ body {
     font-size: 2.75em;
     font-weight: bold;
     transition: 0.24s 0.2s;
-    background: url('../img/radish.png') no-repeat;
+    background: url('images/radish.png') no-repeat;
     background-color: #0F611A;
     margin-top: 3%;
     margin-left: 5%;
