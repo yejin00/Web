@@ -33,7 +33,7 @@ ALLOWED_HOSTS = ['*']
 INSTALLED_APPS = [
     'main',
     'CabbageApp',
-    # 'RadishApp',
+    'RadishApp',
     'OnionApp',
     'PepperApp',
     'django.contrib.admin',
@@ -80,24 +80,24 @@ WSGI_APPLICATION = 'crop_forecasting_system.wsgi.application'
 
 DATABASES = {
     'default': {
-        # 'ENGINE': 'django.db.backends.mysql',
-        # 'NAME': 'share',
-        # 'USER': 'sang2',
-        # 'PASSWORD': '8888',
-        # 'HOST': '192.168.0.8',
-        # 'PORT': '3306',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'share',
+        'USER': 'sang2',
+        'PASSWORD': '8888',
+        'HOST': '192.168.0.8',
+        'PORT': '3306',
         # 'ENGINE': 'django.db.backends.mysql',
         # 'NAME': 'share',
         # 'USER': 'cafe22',
         # 'PASSWORD': '1234',
         # 'HOST': '172.30.1.3',
         # 'PORT': '3306',
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'share',
-        'USER': 'root',
-        'PASSWORD': 'jooys2757',
-        'HOST': 'localhost',
-        'PORT': '3306',
+        # 'ENGINE': 'django.db.backends.mysql',
+        # 'NAME': 'share',
+        # 'USER': 'root',
+        # 'PASSWORD': 'jooys2757',
+        # 'HOST': 'localhost',
+        # 'PORT': '3306',
     }
 }
 

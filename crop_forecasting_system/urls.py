@@ -21,7 +21,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name='index'),
     path('CabbageApp/', include('CabbageApp.urls')),
-    # path('RadishApp/', include('RadishApp.urls')),
+    path('RadishApp/', include('RadishApp.urls')),
     path('OnionApp/', include('OnionApp.urls')),
     path('PepperApp/', include('PepperApp.urls')),
     path('seoul_cabbage/', views.seoul_cabbage, name='seoul_cabbage'),

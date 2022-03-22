@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script> 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/0.5.7/chartjs-plugin-annotation.min.js"></script>
-    <link rel="stylesheet" href="{% static 'OnionApp/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'RadishApp/css/style.css' %}">
     <title>Crop Forecasting System</title>
 </head>
 <body>
@@ -14,7 +14,7 @@
         <h2><a class="hd" href="#" onclick="location.href='http://127.0.0.1:8000/'">농산물 가격 예측 시스템</a></h2>
     </header>
 
-    <div class="icon">양파</div>
+    <div class="icon">무</div>
 
     <div class="crop">
         <a class="btn btnb" onclick="location.href='/CabbageApp/gwangju'">배추</a>
@@ -58,13 +58,12 @@
 
     <div class = "cbody">
         <div class="place">
-            <a class="pbtn" onclick="location.href='/OnionApp/seoul'">서울</a>
-            <a class="pbtn"onclick="location.href='/OnionApp/busan'">부산</a>
-            <a class="pbtn"onclick="location.href='/OnionApp/daegu'">대구</a>
-            <a class="pbtn"onclick="location.href='/OnionApp/daejeon'">대전</a>
-            <a class="pbtn pbtng"onclick="location.href='/OnionApp/gwangju'">광주</a>
+            <a class="pbtn" onclick="location.href='/RadishApp/seoul'">서울</a>
+            <a class="pbtn"onclick="location.href='/RadishApp/busan'">부산</a>
+            <a class="pbtn"onclick="location.href='/RadishApp/daegu'">대구</a>
+            <a class="pbtn"onclick="location.href='/RadishApp/daejeon'">대전</a>
+            <a class="pbtn pbtnb"onclick="location.href='/RadishApp/gwangju'">광주</a>
         </div>
-
         <div class = "crt">
             <ul class="title">
                 <li class="avg">
@@ -77,7 +76,7 @@
             <ul class="item sj">
                 <li class="avg">
                     <a class="mtitle in">평균</a>
-                    <a class="before in">{{middle}}원/kg</a>
+                    <a class="before in">{{mean}}원/kg</a>
                     <a class="present in">NOT YET원/kg</a>
                     <canvas class="cchart cbg" id="canvas" width="450" height="150"></canvas>
                 </li>
@@ -96,8 +95,7 @@
                     <a class="before in">{{middle}}원/kg</a>
                     <a class="present in">NOT YET원/kg</a>
                     <canvas class="cchart cbg" id="mcanvas" width="450" height="150"></canvas>
-                    <script type="text/javascript" src="{% static 'OnionApp/js/script.js' %}"></script>
-                </li>
+                    <script type="text/javascript" src="{% static 'RadishApp/js/script.js' %}"></script>                </li>
             </ul>
         </div>
 
