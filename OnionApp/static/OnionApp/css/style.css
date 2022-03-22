@@ -1,0 +1,280 @@
+
+header {  
+    height: 50px;
+    padding: 1rem;
+    color: white;
+    background: #1F3256;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.hd{
+    text-decoration: none;
+    color: white;
+}
+  
+body{
+    margin: 0;
+    outline: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+html,
+body {
+    height: 100%;
+    min-height: 300px; 
+    /* background: url('../img/grass.jpg'); */
+    background-size:contain;
+}
+
+.icon {
+    position:absolute;
+    color:black;
+    cursor: pointer;
+    border-radius: 50%;
+    height: 150px;
+    width: 150px;
+    line-height: 150px;
+    text-align: center;
+    font-size: 2.75em;
+    font-weight: bold;
+    transition: 0.24s 0.2s;
+    background: url('images/onion.png') no-repeat;
+    background-color: #0F611A;
+    margin-top: 3%;
+    margin-left: 5%;
+}
+
+/* 작물아이콘 */
+.crop {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    flex-wrap: wrap;
+    width: 80vw;
+    margin-left: 18%;
+}
+
+.btn {
+    width: 50px;
+    height: 20px;
+    margin: 10px;
+    padding: 20px;
+    text-align: center;
+    text-transform: uppercase;
+    background-color: gray;
+    background-size: 200% auto;
+    color: white;
+    border-radius: 20px;
+    font-weight: bold;
+}
+
+.btno{
+    background-color: #426AB2;
+    color: white;
+}
+
+.btn:hover{
+    background-color: #426AB2;
+}
+
+/* 장소아이콘 */
+
+.place {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 7%;
+}
+
+.pbtn {
+    width: 50px;
+    height: 20px;
+    margin: 10px;
+    padding: 20px;
+    text-align: center;
+    text-transform: uppercase;
+    background-color: gray;
+    background-size: 200% auto;
+    color: white;
+    border-radius: 20px;
+    font-weight: bold;
+}
+
+.pbtnd,
+.pbtnj,
+.pbtng,
+.pbtnb,
+.pbtns{
+    background-color: goldenrod;
+}
+
+.pbtn:hover{
+    background-color: goldenrod;
+}
+
+/* 팝업창시작 */
+
+.openBtn{
+    width: 70px;
+    height: 20px;
+    margin: 10px;
+    padding: 20px;
+    text-align: center;
+    text-transform: uppercase;
+    background-color: #0F611A;
+    background-size: 200% auto;
+    color: white;
+    border-radius: 20px;
+    font-weight: bold;
+    margin-left: 40%;
+}
+
+.openBtn:hover{
+    background-color: gray;
+}
+
+.checkBtn{
+    padding: 10px;
+    width: 50px;
+    text-align: center;
+    text-transform: uppercase;
+    background-color: gray;
+    color: white;
+    border-radius: 15px;
+    font-weight: bold;
+    float: right;
+    margin-top: 1%;
+}
+
+.closeBtn{
+    padding: 10px;
+    width: 50px;
+    text-align: center;
+    text-transform: uppercase;
+    background-color: gray;
+    color: white;
+    border-radius: 15px;
+    font-weight: bold;
+    float: right;
+    margin-top: 1%;
+    margin-left: 1%;
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal .bg {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.modalBox {
+    position: absolute;
+    background-color: #fff;
+    width: 500px;
+    height: 390px;
+    padding: 15px;
+    display: block;
+    margin: 0 auto;
+    border-radius: 15px;
+}
+
+.hidden {
+    display: none;
+}
+
+/* 팝업창끝 */
+
+.cbody{
+    display: flex;
+}
+
+.crt{
+    display: flex;
+    flex-direction: column;
+    margin-left: 4%;
+
+
+}
+
+.title{
+    width: 920px;
+    height: 30px;
+    margin: 10px;
+    padding: 20px;
+    text-align: left;
+    text-transform: uppercase;
+    background-color: gray;
+    background-size: 200% auto;
+    color: white;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.item{
+    width: 920px;
+    height: 150px;
+    margin: 10px;
+    padding: 20px;
+    text-align: left;
+    text-transform: uppercase;
+    background-size: 200% auto;
+    background-color: lightgray;
+    color: black;
+    border-radius: 20px;
+    font-weight: bold;
+}
+
+.cchart{
+    border-radius: 10px;
+    padding: 3px;
+    margin-left: 3%;
+    justify-content: center;
+    text-align: center;
+    width: 200px;
+}
+
+
+
+.cbg{
+    background-color: white;
+}
+
+li{
+    margin: 0;
+    outline: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.avg{
+    display: flex;
+}
+
+.mtitle,
+.present,
+.before{
+    width: 150px;
+    justify-content: center;
+    text-align: center;
+}
+
+.in{
+    margin-top: 7%;
+    font-size: large;
+    font-weight: bold;
+}

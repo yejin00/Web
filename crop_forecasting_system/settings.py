@@ -34,7 +34,7 @@ INSTALLED_APPS = [
     'main',
     'CabbageApp',
     # 'RadishApp',
-    # 'OnionApp',
+    'OnionApp',
     'PepperApp',
     'django.contrib.admin',
     'django.contrib.auth',
