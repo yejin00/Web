@@ -8,6 +8,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/0.5.7/chartjs-plugin-annotation.min.js"></script>
     <link rel="stylesheet" href="{% static 'CabbageApp/css/style.css' %}">
     <title>Crop Forecasting System</title>
+
+    <script language="javascript">
+      function showPopup() { window.open("/CabbageApp/settings", "a", "width=350, height=260, left=450, top=200");}
+    </script>
 </head>
 <body>
     <header>
@@ -24,32 +28,8 @@
         
 
         <!-- 팝업창띄우기 -->
-        <a title='구체적인 요인값을 입력하면 더 정확한 예측값을 얻을 수 있습니다.' class="openBtn">요인입력</a>
-        <div class="modal hidden">
-        <div class="bg"></div>
-        <div class="modalBox">
-            <form>
-                구체적인 요인값을 입력하면 더 정확한 예측값을 얻을 수 있습니다.<br>
-                 <br>
-                면적 : <input type='text' value='예시입력'/><br>
-                생산량 : <input type='text'/><br>
-                물가지수: <input type='text'/><br>
-                평균기온: <input type='text'/><br>
-                평균최저기온: <input type='text'/><br>
-                평균최고기온: <input type='text'/><br>
-                평균상대습도: <input type='text'/><br>
-                월합강수량: <input type='text'/><br>                
-                총지수 전년동월비: <input type='text'/><br>
-                총지수 전년누계비: <input type='text'/><br>
-                신선식품지수 전년동월비: <input type='text'/><br>
-                신선식품지수 전년누계비: <input type='text'/><br>
-            </form>
-            <div class="lastBtn">
-                <a class="closeBtn">취소</a>
-                <a class="checkBtn">확인</a>
-            </div>
-        </div>
-        </div>
+        <a class="openBtn" onclick="showPopup()">요인입력</a>
+    </div>
 
 
 
@@ -101,6 +81,174 @@
         </div>
 
     </div>
+    <script>
+        var chartData = {
+            labels: ["9","10","11","12","1","2","3","4","5", "6","7","8"],
+            datasets: [{
+                label: '평균값',        
+                data: [{x: 1, y: {{mean_9}}}, {x: 2, y: {{mean_10}}}, {x: 3, y: {{mean_11}}}, {x: 4, y: {{mean_12}}}, {x: 5, y: {{mean_1}}}, {x: 6, y: {{mean_2}}}, {x: 7, y: {{mean_3}}}, {x: 8, y: {{mean_4}}}, {x: 9, y: {{mean_5}}}, {x: 10, y: 0}, {x: 11, y: 0}, {x: 12, y: 0}]
+            
+            }]
+        };
+        var high_1 = {{high_1}}; 
+        console.log(high_1);
+        var hchartData = {
+          labels: ["9","10","11","12","1","2","3","4","5", "6","7","8"],
+          datasets: [{
+              label: '상품값',        
+              data: [{x: 1, y: {{high_9}}}, {x: 2, y: {{high_10}}}, {x: 3, y: {{high_11}}}, {x: 4, y: {{high_12}}}, {x: 5, y: {{high_1}}}, {x: 6, y: {{high_2}}}, {x: 7, y: {{high_3}}}, {x: 8, y: {{high_4}}}, {x: 9, y: {{high_5}}}, {x: 10, y: 0}, {x: 11, y: 0}, {x: 12, y: 0}]
+          
+          }]
+        };
+        var mchartData = {
+          labels: ["9","10","11","12","1","2","3","4","5", "6","7","8"],
+          datasets: [{
+              label: '중품값',        
+              data: [{x: 1, y: 1200}, {x: 2, y: 700}, {x: 3, y: 1500}, {x: 4, y: 1000}, {x: 5, y: 1800}, {x: 6, y: 1400}, {x: 7, y: 1000}, {x: 8, y: 1200}, {x: 9, y: 1300}, {x: 10, y: 800}, {x: 11, y: 1100}, {x: 12, y: 1000}]
+          
+          }]
+        };
+
+        window.onload = function() {
+            var ctx = document.getElementById("canvas").getContext("2d");
+            new Chart(ctx, {
+              type: "line",
+              data: chartData,
+              options: {
+                  legend: {
+                    display: false,
+                  },
+                  annotation: {
+                    annotations: [
+                      {
+                        drawTime: "afterDatasetsDraw",
+                        type: "line",
+                        mode: "vertical",
+                        scaleID: "x-axis-0",
+                        value: 10,
+                        borderWidth: 2,
+                        borderColor: "#e24f31",
+                        label: {
+                          content: "현월",
+                          enabled: true,
+                          position: "top"
+                        }
+                      }
+                    ]
+                  },
+                  responsive: false,
+                  scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true,
+                        }
+                    }],
+                    xAxes: [{
+                      type: 'linear',
+                      ticks: {
+                            stepSize: 1,
+                            callback: function(value, index, values) {
+                                return chartData.labels[index];
+                            }
+                      }
+                    }]
+                  }
+                }
+            });
+          
+            var hctx = document.getElementById("hcanvas").getContext("2d");
+            new Chart(hctx, {
+              type: "line",
+              data: hchartData,
+              options: {
+                  legend: {
+                    display: false,
+                  },
+                  annotation: {
+                    annotations: [
+                      {
+                        drawTime: "afterDatasetsDraw",
+                        type: "line",
+                        mode: "vertical",
+                        scaleID: "x-axis-0",
+                        value: 10,
+                        borderWidth: 2,
+                        borderColor: "#e24f31",
+                        label: {
+                          content: "현월",
+                          enabled: true,
+                          position: "top"
+                        }
+                      }
+                    ]
+                  },
+                  responsive: false,
+                  scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true,
+                        }
+                    }],
+                    xAxes: [{
+                      type: 'linear',
+                      ticks: {
+                            stepSize: 1,
+                            callback: function(value, index, values) {
+                                return chartData.labels[index];
+                            }
+                      }
+                    }]
+                  }
+                }
+            });
+          
+            var mctx = document.getElementById("mcanvas").getContext("2d");
+            new Chart(mctx, {
+              type: "line",
+              data: mchartData,
+              options: {
+                  legend: {
+                    display: false,
+                  },
+                  annotation: {
+                    annotations: [
+                      {
+                        drawTime: "afterDatasetsDraw",
+                        type: "line",
+                        mode: "vertical",
+                        scaleID: "x-axis-0",
+                        value: 10,
+                        borderWidth: 2,
+                        borderColor: "#e24f31",
+                        label: {
+                          content: "현월",
+                          enabled: true,
+                          position: "top"
+                        }
+                      }
+                    ]
+                  },
+                  responsive: false,
+                  scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true,
+                        }
+                    }],
+                    xAxes: [{
+                      type: 'linear',
+                      ticks: {
+                            stepSize: 1,
+                            callback: function(value, index, values) {
+                                return chartData.labels[index];
+                            }
+                      }
+                    }]
+                  }
+                }
+            });
+          };
+    </script>
     
 
 </body>

@@ -9,4 +9,5 @@ urlpatterns = [
     path('daegu/', views.daegu, name='daegu'),
     path('daejeon/', views.daejeon, name='daejeon'),
     path('gwangju/', views.gwangju, name='gwangju'),
+    path('settings/', views.popup, name='settings')
 ]

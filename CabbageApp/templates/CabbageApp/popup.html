@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'CabbageApp/css/style.css' %}">
+    <title>배추 요인입력창</title>
+</head>
+<body>
+            <form class = 'popupform'>
+                면적 : <input type='text' value='예시입력'/><br>
+                생산량 : <input type='text'/><br>
+                물가지수: <input type='text'/><br>
+                평균기온: <input type='text'/><br>
+                월합강수량: <input type='text'/><br>    
+                평균최저기온: <input type='text'/><br>
+                평균최고기온: <input type='text'/><br>
+                평균상대습도: <input type='text'/><br>                            
+                총지수 전년동월비: <input type='text'/><br>
+                총지수 전년누계비: <input type='text'/><br>
+            </form>
+            <div class="lastBtn">
+                <a class="closeBtn" onClick="window.close()">취소</a>
+                <a class="checkBtn" onClick="window.close()">확인</a>
+                </script>
+            </div>
+</body>
+</html>
