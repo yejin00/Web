@@ -57,7 +57,10 @@
                 <li class="avg">
                     <a class="mtitle in">평균</a>
                     <a class="before in">{{mean}}원/kg</a>
-                    <a class="present in">Not yet 원/kg</a>
+                    {% if form.is_valid %}
+                    <a class="present in">{{prediction}} 원/kg</a>
+                    {% else %} <a class="present in"> {{default_mean}}원/kg</a>
+                    {% endif %}
                     <canvas class="cchart cbg" id="canvas" width="450" height="150"></canvas>
                 </li>
             </ul>
@@ -65,15 +68,15 @@
                 <li class="avg">
                     <a class="mtitle in">상품</a>
                     <a class="before in">{{high}}원/kg</a>
-                    <a class="present in">Not yet 원/kg</a>
+                    <a class="present in">{{default_high}}원/kg</a>
                     <canvas class="cchart cbg" id="hcanvas" width="450" height="150"></canvas>
                 </li>
             </ul>
             <ul class="item j">
                 <li class="avg">
                     <a class="mtitle in">중품</a>
-                    <a class="before in">{{mean}} 원/kg</a>
-                    <a class="present in">Not yet 원/kg</a>
+                    <a class="before in">{{mean}}원/kg</a>
+                    <a class="present in">{{default_middle}}원/kg</a>
                     <canvas class="cchart cbg" id="mcanvas" width="450" height="150"></canvas>
                     <script type="text/javascript" src="{% static 'CabbageApp/js/script.js' %}"></script>
                 </li>
