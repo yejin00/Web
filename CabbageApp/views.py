@@ -1,9 +1,12 @@
+from cgi import test
 from multiprocessing import context
+from pyexpat import model
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from .models import Cabbage, Popup
+from .models import Cabbage, Test
 import joblib
 from .forms import CabbageForm, PopupForm
+from django.http import HttpResponse
 
 def seoul(request):
     high = Cabbage.objects.filter(서울=1, 배추상품=1, 년=2021, 월=12).values_list('도매가격', flat=True)[0]
@@ -46,21 +49,29 @@ def busan(request):
     
     if request.method == 'POST':
         form = PopupForm(request.POST)
-        면적 = Popup.objects.values_list('면적', flat=True)[0]
+
         if form.is_valid():
-            면적 =form.cleaned_data['면적']
-            생산량 =form.cleaned_data['생산량']
-            물가지수 = form.cleaned_data['물가지수']
-            총지수전년동월비= form.cleaned_data['총지수전년동월비']
-            신선식품지수전년동월비= form.cleaned_data['신선식품지수전년동월비']
-            평균기온 = form.cleaned_data['평균기온']
-            평균최고기온 = form.cleaned_data['평균최고기온']
-            평균최저기온= form.cleaned_data['평균최저기온']
-            평균상대습도= form.cleaned_data['평균상대습도']
-            평균풍속 = form.cleaned_data['평균풍속']
-            월합강수량= form.cleaned_data['월합강수량']
-            총지수전년누계비 = form.cleaned_data['총지수전년누계비']
-            신선식품지수전년누계비 = form.cleaned_data['신선식품지수전년누계비']
+            # 면적 =form.cleaned_data['면적']
+            # 생산량 =form.cleaned_data['생산량']
+            # 물가지수 = form.cleaned_data['물가지수']
+            # 총지수전년동월비= form.cleaned_data['총지수전년동월비']
+            # 신선식품지수전년동월비= form.cleaned_data['신선식품지수전년동월비']
+            # 평균기온 = form.cleaned_data['평균기온']
+            # 평균최고기온 = form.cleaned_data['평균최고기온']
+            # 평균최저기온= form.cleaned_data['평균최저기온']
+            # 평균상대습도= form.cleaned_data['평균상대습도']
+            # 평균풍속 = form.cleaned_data['평균풍속']
+            # 월합강수량= form.cleaned_data['월합강수량']
+            # 총지수전년누계비 = form.cleaned_data['총지수전년누계비']
+            # 신선식품지수전년누계비 = form.cleaned_data['신선식품지수전년누계비']
+            
+            obj = Test(면적=form.data['면적'], 생산량=form.data['생산량'], 물가지수=form.data['물가지수'], 총지수전년동월비=form.data['총지수전년동월비'],
+                       신선식품지수전년동월비=form.data['신선식품지수전년동월비'], 평균기온=form.data['평균기온'], 평균최고기온=form.data['평균최고기온'],
+                        평균최저기온=form.data['평균최저기온'], 평균상대습도=form.data['평균상대습도'], 평균풍속=form.data['평균풍속']
+                        , 월합강수량=form.data['월합강수량'], 총지수전년누계비=form.data['총지수전년누계비'], 신선식품지수전년누계비=form.data['신선식품지수전년누계비'])
+            
+            obj.save()
+            print(obj)
             
             data_high = {'년': 2022, '월': 1, '배추상품' : 1, '배추중품': 0, '서울' : 0, '부산' : 1, '대구':0, '광주':0, '대전':0, 
                 '면적': 면적, '생산량': 생산량, '물가지수': 물가지수, '총지수전년동월비': 총지수전년동월비, '신선식품지수전년동월비': 신선식품지수전년동월비, 
@@ -187,6 +198,7 @@ def busan(request):
         }
         return render(request, 'CabbageApp/busan.html', context)    
 
+
 def daegu(request):
     high = Cabbage.objects.filter(대구=1, 배추상품=1, 년=2021, 월=12).values_list('도매가격', flat=True)[0]
     middle = Cabbage.objects.filter(대구=1, 배추중품=1, 년=2021, 월=12).values_list('도매가격', flat=True)[0]
@@ -250,3 +262,25 @@ def popup(request):
     else:
         form = PopupForm()
         return render(request, 'CabbageApp/popup.html', {'form' : form})
+    
+    
+def form_test(request):
+    if request.method == 'POST':
+        form = PopupForm(request.POST)
+        if form.is_valid():
+            model = Test(면적=form.data['면적'], 생산량=form.data['생산량'], 물가지수=form.data['물가지수'], 총지수전년동월비=form.data['총지수전년동월비'],
+                       신선식품지수전년동월비=form.data['신선식품지수전년동월비'], 평균기온=form.data['평균기온'], 평균최고기온=form.data['평균최고기온'],
+                        평균최저기온=form.data['평균최저기온'], 평균상대습도=form.data['평균상대습도'], 평균풍속=form.data['평균풍속']
+                        , 월합강수량=form.data['월합강수량'], 총지수전년누계비=form.data['총지수전년누계비'], 신선식품지수전년누계비=form.data['신선식품지수전년누계비'])
+            
+            model.save()
+            # return HttpResponse('success')
+            return redirect('http://127.0.0.1:8000/CabbageApp/busan') 
+            # return "redirect:/CabbageApp/busan"
+        
+        return HttpResponse('fail')
+    elif request.method == 'GET':
+        form = PopupForm()
+        return render(request, 'CabbageApp/testpop.html', {'form': form})
+    else:
+        pass
