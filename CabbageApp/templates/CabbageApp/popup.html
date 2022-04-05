@@ -9,8 +9,8 @@
     <title>배추 요인입력창</title>
 </head>
 <body>
-            <form class = 'popupform'>
-                면적 : <input type='text' value='예시입력'/><br>
+            {% comment %} <form class = 'popupform'>
+                면적 : <input type='text' ='예시입력'/><br>
                 생산량 : <input type='text'/><br>
                 물가지수: <input type='text'/><br>
                 평균기온: <input type='text'/><br>
@@ -20,7 +20,19 @@
                 평균상대습도: <input type='text'/><br>                            
                 총지수 전년동월비: <input type='text'/><br>
                 총지수 전년누계비: <input type='text'/><br>
+            </form>  {% endcomment %}
+
+            <form action="{% url 'CabbageApp:busan'%}" method="POST"> 
+                {% comment %} 원래 result {% endcomment %}
+                {% csrf_token %}
+                {{form.as_p}}
+                <input type="submit" value="Submit">
             </form>
+
+            
+            {% comment %} {% if form.is_valid %}
+            <p> The model predicted: <b>{{prediction_input}}</b></p>
+            {%endif%} {% endcomment %}
             <div class="lastBtn">
                 <a class="closeBtn" onClick="window.close()">취소</a>
                 <a class="checkBtn" onClick="window.close()">확인</a>

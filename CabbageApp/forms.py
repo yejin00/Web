@@ -24,3 +24,19 @@ class CabbageForm(forms.Form):
     총지수전년누계비 =forms.DecimalField(label='총지수전년누계비')
     신선식품지수전년누계비 =forms.DecimalField(label='신선식품지수전년누계비')
     배추상중 = forms.DecimalField(label='배추상중')
+    
+
+class PopupForm(forms.Form):
+    면적 =forms.DecimalField(label='면적')
+    생산량 =forms.DecimalField(label='생산량')
+    물가지수 =forms.DecimalField(label='물가지수')
+    총지수전년동월비= forms.DecimalField(label='총지수전년동월비')
+    신선식품지수전년동월비= forms.DecimalField(label='신선식품지수전년동월비')
+    평균기온 = forms.DecimalField(label='평균기온')
+    평균최고기온 = forms.DecimalField(label='평균최고기온')
+    평균최저기온= forms.DecimalField(label='평균최저기온')
+    평균상대습도= forms.DecimalField(label='평균상대습도')
+    평균풍속 = forms.DecimalField(label='평균풍속')
+    월합강수량= forms.DecimalField(label='월합강수량')
+    총지수전년누계비 =forms.DecimalField(label='총지수전년누계비')
+    신선식품지수전년누계비 =forms.DecimalField(label='신선식품지수전년누계비')
