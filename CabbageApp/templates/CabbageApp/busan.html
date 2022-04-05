@@ -57,10 +57,9 @@
                 <li class="avg">
                     <a class="mtitle in">평균</a>
                     <a class="before in">{{mean}}원/kg</a>
-                    {% if form.is_valid %}
-                    <a class="present in">{{prediction}} 원/kg</a>
-                    {% else %} <a class="present in"> {{default_mean}}원/kg</a>
-                    {% endif %}
+                    {% comment %} {% if form.is_valid %}
+                    <a class="present in">{{}} 원/kg</a> {% endcomment %}
+                    <a class="present in"> {{default_mean}}원/kg</a>
                     <canvas class="cchart cbg" id="canvas" width="450" height="150"></canvas>
                 </li>
             </ul>

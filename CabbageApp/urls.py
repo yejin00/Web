@@ -9,6 +9,6 @@ urlpatterns = [
     path('daegu/', views.daegu, name='daegu'),
     path('daejeon/', views.daejeon, name='daejeon'),
     path('gwangju/', views.gwangju, name='gwangju'),
-    path('settings/', views.popup, name='settings'),
-    path('form_test/', views.form_test, name='form_test')
+    path('settings/', views.settings, name='settings'),
+    # path('form_test/', views.form_test, name='form_test')
 ]

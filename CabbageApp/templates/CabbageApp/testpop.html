@@ -1,4 +1,4 @@
-<form action="{% url 'CabbageApp:form_test' %}" method="post">
+<form action="{% url 'CabbageApp:settings' %}" method="post">
     {% csrf_token %}
     {{ form|linebreaks }}
     <input type="submit" value="submit" name="submit">
