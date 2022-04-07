@@ -134,7 +134,7 @@ def busan(request):
                 default_prediction = default_prediction.round(3)
                 default_list.append(default_prediction)
         
-        # prediction value 넣어서 바꿔야함    
+        # prediction value 넣어서 바꿔야함(뒤에 세개)
         high_list = [high_1, high_2, high_3, high_4, high_5, high_6, high_7, high_8, high_9, high_10, high_11, high_12]
         mean_list = [mean_1, mean_2, mean_3, mean_4, mean_5, mean_6, mean_7, mean_8, mean_9, mean_10, mean_11, mean_12]
         
