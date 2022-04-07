@@ -3,7 +3,7 @@ from multiprocessing import context
 from pickle import GET
 from pyexpat import model
 from django.shortcuts import render, redirect
-from .models import Cabbage, Test
+from .models import Cabbage, Test, CabbageBusan
 import joblib
 from .forms import CabbageForm, PopupForm
 
@@ -45,59 +45,116 @@ def busan(request):
     mean_11 = Cabbage.objects.filter(부산=1, 배추상중=1, 년=2021, 월=11).values_list('도매가격', flat=True)[0]
     mean_12 = Cabbage.objects.filter(부산=1, 배추상중=1 , 년=2021, 월=12).values_list('도매가격', flat=True)[0]
 
+
+    middle_1 = Cabbage.objects.filter(부산=1, 배추중품=1, 년=2021, 월=1).values_list('도매가격', flat=True)[0]
+    middle_2 = Cabbage.objects.filter(부산=1, 배추중품=1, 년=2021, 월=2).values_list('도매가격', flat=True)[0]
+    middle_3 = Cabbage.objects.filter(부산=1, 배추중품=1 , 년=2021, 월=3).values_list('도매가격', flat=True)[0]
+    middle_4 = Cabbage.objects.filter(부산=1, 배추중품=1, 년=2021, 월=4).values_list('도매가격', flat=True)[0]
+    middle_5 = Cabbage.objects.filter(부산=1, 배추중품=1, 년=2021, 월=5).values_list('도매가격', flat=True)[0]
+    middle_6 = Cabbage.objects.filter(부산=1, 배추중품=1 , 년=2021, 월=6).values_list('도매가격', flat=True)[0]
+    middle_7 = Cabbage.objects.filter(부산=1, 배추중품=1, 년=2021, 월=7).values_list('도매가격', flat=True)[0]
+    middle_8 = Cabbage.objects.filter(부산=1, 배추중품=1, 년=2021, 월=8).values_list('도매가격', flat=True)[0]
+    middle_9 = Cabbage.objects.filter(부산=1, 배추중품=1 , 년=2021, 월=9).values_list('도매가격', flat=True)[0]
+    middle_10 = Cabbage.objects.filter(부산=1, 배추중품=1, 년=2021, 월=10).values_list('도매가격', flat=True)[0]
+    middle_11 = Cabbage.objects.filter(부산=1, 배추중품=1, 년=2021, 월=11).values_list('도매가격', flat=True)[0]
+    middle_12 = Cabbage.objects.filter(부산=1, 배추중품=1 , 년=2021, 월=12).values_list('도매가격', flat=True)[0]
     
     if request.method == 'GET':
-        test = Test.objects.all()
-        if test.exists():
-            면적 = Test.objects.values_list('면적', flat=True)[0]
-            생산량 = Test.objects.values_list('생산량', flat=True)[0]
-            물가지수 = Test.objects.values_list('물가지수', flat=True)[0]
-            총지수전년동월비 = Test.objects.values_list('총지수전년동월비', flat=True)[0]
-            신선식품지수전년동월비 = Test.objects.values_list('신선식품지수전년동월비', flat=True)[0]
-            평균기온 = Test.objects.values_list('평균기온', flat=True)[0]
-            평균최고기온 = Test.objects.values_list('평균최고기온', flat=True)[0]
-            평균최저기온 = Test.objects.values_list('평균최저기온', flat=True)[0]
-            평균풍속 = Test.objects.values_list('평균풍속', flat=True)[0]
-            월합강수량 = Test.objects.values_list('월합강수량', flat=True)[0]
-            평균상대습도 = Test.objects.values_list('평균상대습도', flat=True)[0]
-            총지수전년누계비 = Test.objects.values_list('총지수전년누계비', flat=True)[0]
-            신선식품지수전년누계비 = Test.objects.values_list('신선식품지수전년누계비', flat=True)[0]
-      
-            data_high = {'년': 2022, '월': 1, '배추상품' : 1, '배추중품': 0, '서울' : 0, '부산' : 1, '대구':0, '광주':0, '대전':0, 
-                        '면적': 면적, '생산량': 생산량, '물가지수': 물가지수, '총지수전년동월비': 총지수전년동월비, '신선식품지수전년동월비': 신선식품지수전년동월비, 
-                        '평균기온': 평균기온, '평균최고기온': 평균최고기온, '평균최저기온': 평균최저기온, '평균상대습도': 평균상대습도, '평균풍속': 평균풍속, '월합강수량': 월합강수량,
-                        '총지수전년누계비': 총지수전년누계비, '신선식품지수전년누계비':신선식품지수전년누계비, '배추상중': 0,}
-            
-            data_middle = {'년': 2022, '월': 1, '배추상품' : 0, '배추중품': 1, '서울' : 0, '부산' : 1, '대구':0, '광주':0, '대전':0, '면적': 면적, '생산량': 생산량, '물가지수': 물가지수, '총지수전년동월비': 총지수전년동월비, '신선식품지수전년동월비': 신선식품지수전년동월비, 
-                        '평균기온': 평균기온, '평균최고기온': 평균최고기온, '평균최저기온': 평균최저기온, '평균상대습도': 평균상대습도, '평균풍속': 평균풍속, '월합강수량': 월합강수량, 
-                        '총지수전년누계비': 총지수전년누계비, '신선식품지수전년누계비':신선식품지수전년누계비, '배추상중': 0,
-                        }
-            
-            data_mean = {'년': 2022, '월': 1, '배추상품' : 0, '배추중품': 0, '서울' : 0, '부산' : 1, '대구':0, '광주':0, '대전':0, 
-                        '면적': 면적, '생산량': 생산량, '물가지수': 물가지수, '총지수전년동월비': 총지수전년동월비, '신선식품지수전년동월비': 신선식품지수전년동월비, 
-                        '평균기온': 평균기온, '평균최고기온': 평균최고기온, '평균최저기온': 평균최저기온, '평균상대습도': 평균상대습도, '평균풍속': 평균풍속, '월합강수량': 월합강수량, 
-                        '총지수전년누계비': 총지수전년누계비, '신선식품지수전년누계비':신선식품지수전년누계비, '배추상중': 1,
-                        }
-            
-        else: 
-            
-            data_high = {'년': 2022, '월': 1, '배추상품' : 1, '배추중품': 0, '서울' : 0, '부산' : 1, '대구':0, '광주':0, '대전':0, 
-                    '면적': 6, '생산량': 771, '물가지수': 136, '총지수전년동월비':1.18, '신선식품지수전년동월비':5, 
-                    '평균기온':-1.5, '평균최고기온':2.842857 , '평균최저기온': -5.471429, '평균상대습도': 52.8, '평균풍속': 2.12, '월합강수량': 239.229, 
-                    '총지수전년누계비': 10, '신선식품지수전년누계비':10, '배추상중': 0,
-                    }
-            data_middle = {'년': 2022, '월': 1, '배추상품' : 0, '배추중품': 1, '서울' : 0, '부산' : 1, '대구':0, '광주':0, '대전':0, 
-                    '면적': 6, '생산량': 771, '물가지수': 136, '총지수전년동월비':1.18, '신선식품지수전년동월비':5, 
-                    '평균기온':-1.5, '평균최고기온':2.842857 , '평균최저기온': -5.471429, '평균상대습도': 52.8, '평균풍속': 2.12, '월합강수량': 239.229, 
-                    '총지수전년누계비': 10, '신선식품지수전년누계비':10, '배추상중': 0,
-                    }
-            data_mean = {'년': 2022, '월': 1, '배추상품' : 0, '배추중품': 0, '서울' : 0, '부산' : 1, '대구':0, '광주':0, '대전':0, 
-                    '면적': 6, '생산량': 771, '물가지수': 136, '총지수전년동월비':1.18, '신선식품지수전년동월비':5, 
-                    '평균기온':-1.5, '평균최고기온':2.842857 , '평균최저기온': -5.471429, '평균상대습도': 52.8, '평균풍속': 2.12, '월합강수량': 239.229, 
-                    '총지수전년누계비': 10, '신선식품지수전년누계비':10, '배추상중': 1,
-                    }
-            
-        data_list = [data_high, data_middle, data_mean]
+        
+        면적 = CabbageBusan.objects.filter(월=6).values_list('면적', flat=True)[0]
+        생산량 = CabbageBusan.objects.filter(월=6).values_list('생산량', flat=True)[0]
+        물가지수6 = CabbageBusan.objects.filter(월=6).values_list('물가지수', flat=True)[0]
+        총지수전년동월비6 = CabbageBusan.objects.filter(월=6).values_list('총지수전년동월비', flat=True)[0]
+        신선식품지수전년동월비6 = CabbageBusan.objects.filter(월=6).values_list('신선식품지수전년동월비', flat=True)[0]
+        평균기온6 = CabbageBusan.objects.filter(월=6).values_list('평균기온', flat=True)[0]
+        평균최고기온6 = CabbageBusan.objects.filter(월=6).values_list('평균최고기온', flat=True)[0]
+        평균최저기온6 = CabbageBusan.objects.filter(월=6).values_list('평균최저기온', flat=True)[0]
+        평균풍속6 = CabbageBusan.objects.filter(월=6).values_list('평균풍속', flat=True)[0]
+        월합강수량6 = CabbageBusan.objects.filter(월=6).values_list('월합강수량', flat=True)[0]
+        평균상대습도6 = CabbageBusan.objects.filter(월=6).values_list('평균상대습도', flat=True)[0]
+        총지수전년누계비6 = CabbageBusan.objects.filter(월=6).values_list('총지수전년누계비', flat=True)[0]
+        신선식품지수전년누계비6 = CabbageBusan.objects.filter(월=6).values_list('신선식품지수전년누계비', flat=True)[0]
+        
+        물가지수7 = CabbageBusan.objects.filter(월=7).values_list('물가지수', flat=True)[0]
+        총지수전년동월비7 = CabbageBusan.objects.filter(월=7).values_list('총지수전년동월비', flat=True)[0]
+        신선식품지수전년동월비7 = CabbageBusan.objects.filter(월=7).values_list('신선식품지수전년동월비', flat=True)[0]
+        평균기온7 = CabbageBusan.objects.filter(월=7).values_list('평균기온', flat=True)[0]
+        평균최고기온7 = CabbageBusan.objects.filter(월=7).values_list('평균최고기온', flat=True)[0]
+        평균최저기온7 = CabbageBusan.objects.filter(월=7).values_list('평균최저기온', flat=True)[0]
+        평균풍속7 = CabbageBusan.objects.filter(월=7).values_list('평균풍속', flat=True)[0]
+        월합강수량7 = CabbageBusan.objects.filter(월=7).values_list('월합강수량', flat=True)[0]
+        평균상대습도7 = CabbageBusan.objects.filter(월=7).values_list('평균상대습도', flat=True)[0]
+        총지수전년누계비7 = CabbageBusan.objects.filter(월=7).values_list('총지수전년누계비', flat=True)[0]
+        신선식품지수전년누계비7 = CabbageBusan.objects.filter(월=7).values_list('신선식품지수전년누계비', flat=True)[0]
+        
+        물가지수8 = CabbageBusan.objects.filter(월=8).values_list('물가지수', flat=True)[0]
+        총지수전년동월비8 = CabbageBusan.objects.filter(월=8).values_list('총지수전년동월비', flat=True)[0]
+        신선식품지수전년동월비8 = CabbageBusan.objects.filter(월=8).values_list('신선식품지수전년동월비', flat=True)[0]
+        평균기온8 = CabbageBusan.objects.filter(월=8).values_list('평균기온', flat=True)[0]
+        평균최고기온8 = CabbageBusan.objects.filter(월=8).values_list('평균최고기온', flat=True)[0]
+        평균최저기온8 = CabbageBusan.objects.filter(월=8).values_list('평균최저기온', flat=True)[0]
+        평균풍속8 = CabbageBusan.objects.filter(월=8).values_list('평균풍속', flat=True)[0]
+        월합강수량8 = CabbageBusan.objects.filter(월=8).values_list('월합강수량', flat=True)[0]
+        평균상대습도8 = CabbageBusan.objects.filter(월=8).values_list('평균상대습도', flat=True)[0]
+        총지수전년누계비8 = CabbageBusan.objects.filter(월=8).values_list('총지수전년누계비', flat=True)[0]
+        신선식품지수전년누계비8 = CabbageBusan.objects.filter(월=8).values_list('신선식품지수전년누계비', flat=True)[0]
+        
+        
+        data_high6 = {'년': 2022, '월': 6, '배추상품' : 1, '배추중품': 0, '서울' : 0, '부산' : 1, '대구':0, '광주':0, '대전':0, 
+                    '면적': 면적, '생산량': 생산량, '물가지수': 물가지수6, '총지수전년동월비': 총지수전년동월비6, '신선식품지수전년동월비': 신선식품지수전년동월비6, 
+                    '평균기온': 평균기온6, '평균최고기온': 평균최고기온6, '평균최저기온': 평균최저기온6, '평균상대습도': 평균상대습도6, '평균풍속': 평균풍속6, '월합강수량': 월합강수량6,
+                    '총지수전년누계비': 총지수전년누계비6, '신선식품지수전년누계비':신선식품지수전년누계비6, '배추상중': 0,}
+        
+        data_high7 = {'년': 2022, '월': 7, '배추상품' : 1, '배추중품': 0, '서울' : 0, '부산' : 1, '대구':0, '광주':0, '대전':0, 
+                    '면적': 면적, '생산량': 생산량, '물가지수': 물가지수7, '총지수전년동월비': 총지수전년동월비7, '신선식품지수전년동월비': 신선식품지수전년동월비7, 
+                    '평균기온': 평균기온7, '평균최고기온': 평균최고기온7, '평균최저기온': 평균최저기온7, '평균상대습도': 평균상대습도7, '평균풍속': 평균풍속7, '월합강수량': 월합강수량7,
+                    '총지수전년누계비': 총지수전년누계비7, '신선식품지수전년누계비':신선식품지수전년누계비7, '배추상중': 0,}
+        
+        data_high8 = {'년': 2022, '월': 8, '배추상품' : 1, '배추중품': 0, '서울' : 0, '부산' : 1, '대구':0, '광주':0, '대전':0, 
+                    '면적': 면적, '생산량': 생산량, '물가지수': 물가지수8, '총지수전년동월비': 총지수전년동월비8, '신선식품지수전년동월비': 신선식품지수전년동월비8, 
+                    '평균기온': 평균기온8, '평균최고기온': 평균최고기온8, '평균최저기온': 평균최저기온8, '평균상대습도': 평균상대습도8, '평균풍속': 평균풍속8, '월합강수량': 월합강수량8,
+                    '총지수전년누계비': 총지수전년누계비8, '신선식품지수전년누계비':신선식품지수전년누계비8, '배추상중': 0,}
+        
+        
+        
+        data_middle6= {'년': 2022, '월': 6, '배추상품' : 0, '배추중품': 1, '서울' : 0, '부산' : 1, '대구':0, '광주':0, '대전':0, 
+                    '면적': 면적, '생산량': 생산량, '물가지수': 물가지수6, '총지수전년동월비': 총지수전년동월비6, '신선식품지수전년동월비': 신선식품지수전년동월비6, 
+                    '평균기온': 평균기온6, '평균최고기온': 평균최고기온6, '평균최저기온': 평균최저기온6, '평균상대습도': 평균상대습도6, '평균풍속': 평균풍속6, '월합강수량': 월합강수량6,
+                    '총지수전년누계비': 총지수전년누계비6, '신선식품지수전년누계비':신선식품지수전년누계비6, '배추상중': 0,}
+        
+        data_middle7 = {'년': 2022, '월': 7, '배추상품' : 0, '배추중품':1 , '서울' : 0, '부산' : 1, '대구':0, '광주':0, '대전':0, 
+                    '면적': 면적, '생산량': 생산량, '물가지수': 물가지수7, '총지수전년동월비': 총지수전년동월비7, '신선식품지수전년동월비': 신선식품지수전년동월비7, 
+                    '평균기온': 평균기온7, '평균최고기온': 평균최고기온7, '평균최저기온': 평균최저기온7, '평균상대습도': 평균상대습도7, '평균풍속': 평균풍속7, '월합강수량': 월합강수량7,
+                    '총지수전년누계비': 총지수전년누계비7, '신선식품지수전년누계비':신선식품지수전년누계비7, '배추상중': 0,}
+        
+        data_middle8 = {'년': 2022, '월': 8, '배추상품' : 0, '배추중품': 1, '서울' : 0, '부산' : 1, '대구':0, '광주':0, '대전':0, 
+                    '면적': 면적, '생산량': 생산량, '물가지수': 물가지수8, '총지수전년동월비': 총지수전년동월비8, '신선식품지수전년동월비': 신선식품지수전년동월비8, 
+                    '평균기온': 평균기온8, '평균최고기온': 평균최고기온8, '평균최저기온': 평균최저기온8, '평균상대습도': 평균상대습도8, '평균풍속': 평균풍속8, '월합강수량': 월합강수량8,
+                    '총지수전년누계비': 총지수전년누계비8, '신선식품지수전년누계비':신선식품지수전년누계비8, '배추상중': 0,}             
+        
+        
+        
+        data_mean6= {'년': 2022, '월': 6, '배추상품' : 0, '배추중품': 0, '서울' : 0, '부산' : 1, '대구':0, '광주':0, '대전':0, 
+                    '면적': 면적, '생산량': 생산량, '물가지수': 물가지수6, '총지수전년동월비': 총지수전년동월비6, '신선식품지수전년동월비': 신선식품지수전년동월비6, 
+                    '평균기온': 평균기온6, '평균최고기온': 평균최고기온6, '평균최저기온': 평균최저기온6, '평균상대습도': 평균상대습도6, '평균풍속': 평균풍속6, '월합강수량': 월합강수량6,
+                    '총지수전년누계비': 총지수전년누계비6, '신선식품지수전년누계비':신선식품지수전년누계비6, '배추상중': 1,}
+        
+        data_mean7 = {'년': 2022, '월': 7, '배추상품' : 0, '배추중품':0 , '서울' : 0, '부산' : 1, '대구':0, '광주':0, '대전':0, 
+                    '면적': 면적, '생산량': 생산량, '물가지수': 물가지수7, '총지수전년동월비': 총지수전년동월비7, '신선식품지수전년동월비': 신선식품지수전년동월비7, 
+                    '평균기온': 평균기온7, '평균최고기온': 평균최고기온7, '평균최저기온': 평균최저기온7, '평균상대습도': 평균상대습도7, '평균풍속': 평균풍속7, '월합강수량': 월합강수량7,
+                    '총지수전년누계비': 총지수전년누계비7, '신선식품지수전년누계비':신선식품지수전년누계비7, '배추상중': 1,}
+        
+        data_mean8 = {'년': 2022, '월': 8, '배추상품' : 0, '배추중품': 0, '서울' : 0, '부산' : 1, '대구':0, '광주':0, '대전':0, 
+                    '면적': 면적, '생산량': 생산량, '물가지수': 물가지수8, '총지수전년동월비': 총지수전년동월비8, '신선식품지수전년동월비': 신선식품지수전년동월비8, 
+                    '평균기온': 평균기온8, '평균최고기온': 평균최고기온8, '평균최저기온': 평균최저기온8, '평균상대습도': 평균상대습도8, '평균풍속': 평균풍속8, '월합강수량': 월합강수량8,
+                    '총지수전년누계비': 총지수전년누계비8, '신선식품지수전년누계비':신선식품지수전년누계비8, '배추상중': 1,}   
+
+        
+        data_list = [data_high6, data_high7, data_high8,
+                     data_middle6, data_middle7, data_middle8,
+                     data_mean6, data_mean7, data_mean8
+                     ]
+        
         default_list = []
         for i in data_list:
             form = CabbageForm(i)
@@ -135,13 +192,15 @@ def busan(request):
                 default_list.append(default_prediction)
         
         # prediction value 넣어서 바꿔야함(뒤에 세개)
-        high_list = [high_1, high_2, high_3, high_4, high_5, high_6, high_7, high_8, high_9, high_10, high_11, high_12]
-        mean_list = [mean_1, mean_2, mean_3, mean_4, mean_5, mean_6, mean_7, mean_8, mean_9, mean_10, mean_11, mean_12]
+        high_list = [high_9, high_10, high_11, high_12, high_1, high_2, high_3, high_4, high_5, default_list[0],  default_list[1], default_list[2]]
+        mean_list = [mean_9, mean_10, mean_11, mean_12, mean_1, mean_2, mean_3, mean_4, mean_5, default_list[6],  default_list[7], default_list[8]]
+        middle_list = [middle_9, middle_10, middle_11, middle_12, middle_1, middle_2, middle_3, middle_4, middle_5, default_list[3],  default_list[4], default_list[5]]
+        
         
         context = {
         'high' : high, 'middle' : middle, 'mean' : mean,
-        'high_list': high_list, 'mean_list': mean_list,
-        'default_high': default_list[0], 'default_middle': default_list[1], 'default_mean': default_list[2]
+        'high_list': high_list, 'mean_list': mean_list, 'middle_list' : middle_list,
+        'default_high': default_list[0], 'default_middle': default_list[3], 'default_mean': default_list[6]
         }
         return render(request, 'CabbageApp/busan.html', context)    
     

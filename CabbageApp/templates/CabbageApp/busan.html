@@ -78,7 +78,7 @@
                     <li class="item">
                         <a class="in"> 중품 </a>
                         <a class="in"> {{middle}}원/kg </a>
-                        <a class="in"> Not yet 원/kg </a>
+                        <a class="in"> {{default_middle}}원/kg </a>
                     </li>
                 </ul>
             </div>
@@ -93,6 +93,7 @@
     <script>
       var high_list = {{high_list}};
       var mean_list = {{mean_list}};
+      var middle_list = {{middle_list}};
       window.onload = function() {
         var ctx = document.getElementById("canvas").getContext("2d");
         new Chart(ctx, {
@@ -124,7 +125,7 @@
               },
               {
                 label: '중품값',        
-                data: [1000,900,800,400,1300,1000,800,500,600,400,900,1500],
+                data: middle_list,
                 backgroundColor: '#18b171',
                 borderColor: '#18b171',
                 borderWidth: 3,
