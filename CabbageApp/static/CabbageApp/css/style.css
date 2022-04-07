@@ -51,12 +51,15 @@ body {
 /* 작물아이콘 */
 .crop {
     display: flex;
-    justify-content: center;
     align-items: center;
     align-content: center;
+    margin-left: 17%;
     flex-wrap: wrap;
     width: 80vw;
-    margin-left: 18%;
+}
+
+.hicon{
+    display: flex;
 }
 
 .btn {
@@ -89,6 +92,7 @@ body {
     flex-direction: column;
     justify-content: center;
     margin-left: 7%;
+    margin-top: 2%;
 }
 
 .pbtn {
@@ -120,7 +124,7 @@ body {
 /* 팝업창시작 */
 
 .openBtn{
-    width: 70px;
+    width: 80px;
     height: 20px;
     margin: 10px;
     padding: 20px;
@@ -131,13 +135,15 @@ body {
     color: white;
     border-radius: 20px;
     font-weight: bold;
-    margin-left: 40%;
+    float: right;
+    margin-right: 2%;
 }
 
 .openBtn:hover{
     background-color: gray;
 }
 
+.closeBtn,
 .checkBtn{
     padding: 10px;
     width: 50px;
@@ -152,16 +158,6 @@ body {
 }
 
 .closeBtn{
-    padding: 10px;
-    width: 50px;
-    text-align: center;
-    text-transform: uppercase;
-    background-color: gray;
-    color: white;
-    border-radius: 15px;
-    font-weight: bold;
-    float: right;
-    margin-top: 4%;
     margin-left: 1%;
     margin-right: 3%;
 }
@@ -174,20 +170,23 @@ body {
 
 /* 팝업창끝 */
 
-.cbody{
+.contents{
     display: flex;
 }
 
 .crt{
     display: flex;
     flex-direction: column;
-    margin-left: 4%;
+    margin-left: 17%;
+}
 
-
+.content{
+    display: flex;
+    margin-top: 1%;
 }
 
 .title{
-    width: 920px;
+    width: 1250px;
     height: 30px;
     margin: 10px;
     padding: 20px;
@@ -200,33 +199,63 @@ body {
     font-weight: bold;
 }
 
-.item{
-    width: 920px;
-    height: 150px;
-    margin: 10px;
-    padding: 20px;
-    text-align: left;
-    text-transform: uppercase;
-    background-size: 200% auto;
+.chart,
+.num{
+    display: flex;
+    border-radius: 10px;
+    margin-bottom: 1%;
+}
+
+.num{
+    margin-left: 4%;
+    flex-direction: column;
+}
+
+.chart{
+    width: 780px;
+    height: 450px;
     background-color: lightgray;
-    color: black;
-    border-radius: 20px;
+    margin-left: 1%;
+}
+
+.numname{
+    width: 550px;
+}
+
+.inname{
+    justify-content: center;
+    text-align: center;
+    font-weight: bold;
+    margin-left: 15%;
+}
+
+.pricename{
+    margin-left: 11%;
+}
+
+.chartname{
+    width: 700px;
+    justify-content: center;
+    text-align: center;
     font-weight: bold;
 }
 
-.cchart{
-    border-radius: 10px;
-    padding: 3px;
-    margin-left: 3%;
-    justify-content: center;
-    text-align: center;
-    width: 200px;
+.items{
+    width: 500px;
+    height: 90px;
+    margin: 10px;
+    padding: 20px;
+    background-color: lightgray;
+    border-radius: 20px;
 }
 
-
-
-.cbg{
-    background-color: white;
+.in{
+    justify-content: center;
+    text-align: center;
+    font-weight: bold;
+    margin-left: 15%;
+    margin-top: 5%;
+    line-height: 90px;
 }
 
 li{
@@ -240,16 +269,16 @@ li{
     display: flex;
 }
 
-.mtitle,
-.present,
-.before{
-    width: 150px;
+.name{
+    width: 170px;
     justify-content: center;
     text-align: center;
 }
 
-.in{
-    margin-top: 7%;
-    font-size: large;
-    font-weight: bold;
+.cchart{
+    border-radius: 10px;
+    padding: 3px;
+    margin-left: 2%;
+    margin-top: 2%;
+    background-color: white;
 }

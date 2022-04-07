@@ -3,11 +3,9 @@ from multiprocessing import context
 from pickle import GET
 from pyexpat import model
 from django.shortcuts import render, redirect
-from django.contrib import messages
 from .models import Cabbage, Test
 import joblib
 from .forms import CabbageForm, PopupForm
-from django.http import HttpResponse
 
 def seoul(request):
     high = Cabbage.objects.filter(서울=1, 배추상품=1, 년=2021, 월=12).values_list('도매가격', flat=True)[0]
@@ -49,13 +47,8 @@ def busan(request):
 
     
     if request.method == 'GET':
-                
-        # form = PopupForm(request.POST)
         test = Test.objects.all()
-
-        
         if test.exists():
-            
             면적 = Test.objects.values_list('면적', flat=True)[0]
             생산량 = Test.objects.values_list('생산량', flat=True)[0]
             물가지수 = Test.objects.values_list('물가지수', flat=True)[0]
@@ -140,14 +133,14 @@ def busan(request):
                 default_prediction = ridge.predict(model_features)[0]
                 default_prediction = default_prediction.round(3)
                 default_list.append(default_prediction)
-            
-         # 주석
+        
+        # prediction value 넣어서 바꿔야함    
+        high_list = [high_1, high_2, high_3, high_4, high_5, high_6, high_7, high_8, high_9, high_10, high_11, high_12]
+        mean_list = [mean_1, mean_2, mean_3, mean_4, mean_5, mean_6, mean_7, mean_8, mean_9, mean_10, mean_11, mean_12]
+        
         context = {
         'high' : high, 'middle' : middle, 'mean' : mean,
-        'high_1' : high_1, 'high_2' : high_2, 'high_3' : high_3, 'high_4' : high_4, 'high_5' : high_5, 'high_6' : high_6,
-        'high_7' : high_7, 'high_8' : high_8, 'high_9' : high_9, 'high_10' : high_10, 'high_11' : high_11, 'high_12' : high_12,
-        'mean_1' : mean_1, 'mean_2' : mean_2, 'mean_3' : mean_3, 'mean_4' : mean_4, 'mean_5' : mean_5, 'mean_6' : mean_6,
-        'mean_7' : mean_7, 'mean_8' : mean_8, 'mean_9' : mean_9, 'mean_10' : mean_10, 'mean_11' : mean_11, 'mean_12' : mean_12,
+        'high_list': high_list, 'mean_list': mean_list,
         'default_high': default_list[0], 'default_middle': default_list[1], 'default_mean': default_list[2]
         }
         return render(request, 'CabbageApp/busan.html', context)    
@@ -206,17 +199,6 @@ def gwangju(request):
     mean = Cabbage.objects.filter(광주=1, 배추상중=1 , 년=2021, 월=12).values_list('도매가격', flat=True)[0]
     context = {'high' : high, 'middle' : middle, 'mean' : mean}
     return render(request, 'CabbageApp/gwangju.html', context)
-
-# def popup(request):
-#     if request.method == 'POST':
-#         form = PopupForm(request.POST)
-#         if form.is_valid():
-#             popup_form = form.save(commit=False) # 바로 저장하는 것을 방지
-#             popup_form.save()
-#             return redirect('busan/')
-#     else:
-#         form = PopupForm()
-#         return render(request, 'CabbageApp/popup.html', {'form' : form})
     
     
 def settings(request):
@@ -229,41 +211,15 @@ def settings(request):
         '총지수전년누계비': 10, '신선식품지수전년누계비':10})
         
         if form.is_valid():
-            
-            # 면적 = form.cleaned_data['면적']
-            # 생산량 =form.cleaned_data['생산량']
-            # 물가지수 = form.cleaned_data['물가지수']
-            # 총지수전년동월비= form.cleaned_data['총지수전년동월비']
-            # 신선식품지수전년동월비= form.cleaned_data['신선식품지수전년동월비']
-            # 평균기온 = form.cleaned_data['평균기온']
-            # 평균최고기온 = form.cleaned_data['평균최고기온']
-            # 평균최저기온= form.cleaned_data['평균최저기온']
-            # 평균상대습도= form.cleaned_data['평균상대습도']
-            # 평균풍속 = form.cleaned_data['평균풍속']
-            # 월합강수량= form.cleaned_data['월합강수량']
-            # 총지수전년누계비 = form.cleaned_data['총지수전년누계비']
-            # 신선식품지수전년누계비 = form.cleaned_data['신선식품지수전년누계비']
-
-            
             model = Test(면적=form.data['면적'], 생산량=form.data['생산량'], 물가지수=form.data['물가지수'], 총지수전년동월비=form.data['총지수전년동월비'],
                        신선식품지수전년동월비=form.data['신선식품지수전년동월비'], 평균기온=form.data['평균기온'], 평균최고기온=form.data['평균최고기온'],
                         평균최저기온=form.data['평균최저기온'], 평균상대습도=form.data['평균상대습도'], 평균풍속=form.data['평균풍속']
-                        , 월합강수량=form.data['월합강수량'], 총지수전년누계비=form.data['총지수전년누계비'], 신선식품지수전년누계비=form.data['신선식품지수전년누계비'])
-            
-            # model = Test(면적, 생산량, 물가지수, 총지수전년동월비, 신선식품지수전년동월비, 평균기온, 평균최고기온, 평균최저기온, 평균상대습도, 평균풍속,
-            #              월합강수량, 총지수전년누계비, 신선식품지수전년누계비)
-
-            
+                        , 월합강수량=form.data['월합강수량'], 총지수전년누계비=form.data['총지수전년누계비'], 신선식품지수전년누계비=form.data['신선식품지수전년누계비'])           
             model.save()
-            
-
-            # return HttpResponse('success')
-            return redirect('http://127.0.0.1:8000/CabbageApp/busan') 
-            # return redirect('busan/')
-            # return "redirect:/CabbageApp/busan"
+            return render(request, 'CabbageApp/popup.html', {'form': form})
             
     else:
         Test.objects.all().delete()
         form = PopupForm()
-        return render(request, 'CabbageApp/testpop.html', {'form': form})
+        return render(request, 'CabbageApp/popup.html', {'form': form})
   
