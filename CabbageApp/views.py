@@ -168,13 +168,13 @@ def busan(request):
                 배추상중 = form.cleaned_data['배추상중']
                 model_features = [
                     [년, 월, 배추상품, 배추중품, 서울, 부산, 대구, 광주, 대전, 면적, 생산량,
-                     물가지수,평균기온, 평균최고기온, 평균최저기온, 평균상대습도,
+                     물가지수, 평균기온, 평균최고기온, 평균최저기온, 평균상대습도,
                      월합강수량, 총지수전년누계비, 배추상중]]
-                ridge = joblib.load('main/ml_model/cabbage_ridge_model.pkl')
+                ridge = joblib.load('main\ml_model\cabbage_ridge_model.pkl')
                 default_prediction = ridge.predict(model_features)[0]
                 default_prediction = default_prediction.round(3)
                 default_list.append(default_prediction)
-        
+
         # prediction value 넣어서 바꿔야함(뒤에 세개)
         high_list = [high_9, high_10, high_11, high_12, high_1, high_2, high_3, high_4, high_5, default_list[0],  default_list[1], default_list[2]]
         mean_list = [mean_9, mean_10, mean_11, mean_12, mean_1, mean_2, mean_3, mean_4, mean_5, default_list[6],  default_list[7], default_list[8]]
