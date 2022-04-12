@@ -15,22 +15,21 @@
     </script>
 </head>
 <body>
-    <form action="{% url 'CabbageApp:settings'%}" method="POST"> 
+    <form action="{% url 'SettingsApp:busan'%}" method="POST"> 
         {% csrf_token %}
+        <h2> 6월 </h2>
         {% for field in form6 %}
             {{ field.label }}
             {{field}}
         {% endfor %}
-
+        <h2> 7월 </h2>
         {% for field in form7 %}
             {{field}}
         {% endfor %}
-
+        <h2> 8월 </h2>
         {% for field in form8 %}
             {{field}}
         {% endfor %}
-
-        {% comment %} {{form.as_p}} {% endcomment %}
         <div class="lastBtn">
             <a class="closeBtn" onClick="window.close()">취소</a>
             <input class="checkBtn" type="submit" onClick="clickEvent();" value="확인">

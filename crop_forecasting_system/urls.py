@@ -24,6 +24,7 @@ urlpatterns = [
     path('RadishApp/', include('RadishApp.urls')),
     path('OnionApp/', include('OnionApp.urls')),
     path('PepperApp/', include('PepperApp.urls')),
+    path('SettingsApp/', include('SettingsApp.urls')),
     path('seoul_cabbage/', views.seoul_cabbage, name='seoul_cabbage'),
     path('seoul_radish/', views.seoul_radish, name='seoul_radish'),
     path('seoul_pepper/', views.seoul_pepper, name='seoul_pepper'),

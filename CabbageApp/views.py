@@ -3,10 +3,9 @@ from multiprocessing import context
 from pickle import GET
 from pyexpat import model
 from django.shortcuts import render, redirect
-from .models import Cabbage, Test, CabbageBusan, Cab6, Cab7, Cab8
+from .models import Cabbage, Cab6, Cab7, Cab8
 import joblib
-from .forms import CabbageForm,  PopupForm6, PopupForm7, PopupForm8
-
+from .forms import CabbageForm
 def seoul(request):
     high = Cabbage.objects.filter(서울=1, 배추상품=1, 년=2021, 월=12).values_list('도매가격', flat=True)[0]
     middle = Cabbage.objects.filter(서울=1, 배추중품=1, 년=2021, 월=12).values_list('도매가격', flat=True)[0]
@@ -24,9 +23,9 @@ def busan(request):
     high_3 = Cabbage.objects.filter(부산=1, 배추상품=1 , 년=2021, 월=3).values_list('도매가격', flat=True)[0]
     high_4 = Cabbage.objects.filter(부산=1, 배추상품=1, 년=2021, 월=4).values_list('도매가격', flat=True)[0]
     high_5 = Cabbage.objects.filter(부산=1, 배추상품=1, 년=2021, 월=5).values_list('도매가격', flat=True)[0]
-    high_6 = Cabbage.objects.filter(부산=1, 배추상품=1 , 년=2021, 월=6).values_list('도매가격', flat=True)[0]
-    high_7 = Cabbage.objects.filter(부산=1, 배추상품=1, 년=2021, 월=7).values_list('도매가격', flat=True)[0]
-    high_8 = Cabbage.objects.filter(부산=1, 배추상품=1, 년=2021, 월=8).values_list('도매가격', flat=True)[0]
+    # high_6 = Cabbage.objects.filter(부산=1, 배추상품=1 , 년=2021, 월=6).values_list('도매가격', flat=True)[0]
+    # high_7 = Cabbage.objects.filter(부산=1, 배추상품=1, 년=2021, 월=7).values_list('도매가격', flat=True)[0]
+    # high_8 = Cabbage.objects.filter(부산=1, 배추상품=1, 년=2021, 월=8).values_list('도매가격', flat=True)[0]
     high_9 = Cabbage.objects.filter(부산=1, 배추상품=1 , 년=2021, 월=9).values_list('도매가격', flat=True)[0]
     high_10 = Cabbage.objects.filter(부산=1, 배추상품=1, 년=2021, 월=10).values_list('도매가격', flat=True)[0]
     high_11 = Cabbage.objects.filter(부산=1, 배추상품=1, 년=2021, 월=11).values_list('도매가격', flat=True)[0]
@@ -37,9 +36,9 @@ def busan(request):
     mean_3 = Cabbage.objects.filter(부산=1, 배추상중=1 , 년=2021, 월=3).values_list('도매가격', flat=True)[0]
     mean_4 = Cabbage.objects.filter(부산=1, 배추상중=1, 년=2021, 월=4).values_list('도매가격', flat=True)[0]
     mean_5 = Cabbage.objects.filter(부산=1, 배추상중=1, 년=2021, 월=5).values_list('도매가격', flat=True)[0]
-    mean_6 = Cabbage.objects.filter(부산=1, 배추상중=1 , 년=2021, 월=6).values_list('도매가격', flat=True)[0]
-    mean_7 = Cabbage.objects.filter(부산=1, 배추상중=1, 년=2021, 월=7).values_list('도매가격', flat=True)[0]
-    mean_8 = Cabbage.objects.filter(부산=1, 배추상중=1, 년=2021, 월=8).values_list('도매가격', flat=True)[0]
+    # mean_6 = Cabbage.objects.filter(부산=1, 배추상중=1 , 년=2021, 월=6).values_list('도매가격', flat=True)[0]
+    # mean_7 = Cabbage.objects.filter(부산=1, 배추상중=1, 년=2021, 월=7).values_list('도매가격', flat=True)[0]
+    # mean_8 = Cabbage.objects.filter(부산=1, 배추상중=1, 년=2021, 월=8).values_list('도매가격', flat=True)[0]
     mean_9 = Cabbage.objects.filter(부산=1, 배추상중=1 , 년=2021, 월=9).values_list('도매가격', flat=True)[0]
     mean_10 = Cabbage.objects.filter(부산=1, 배추상중=1, 년=2021, 월=10).values_list('도매가격', flat=True)[0]
     mean_11 = Cabbage.objects.filter(부산=1, 배추상중=1, 년=2021, 월=11).values_list('도매가격', flat=True)[0]
@@ -51,9 +50,9 @@ def busan(request):
     middle_3 = Cabbage.objects.filter(부산=1, 배추중품=1 , 년=2021, 월=3).values_list('도매가격', flat=True)[0]
     middle_4 = Cabbage.objects.filter(부산=1, 배추중품=1, 년=2021, 월=4).values_list('도매가격', flat=True)[0]
     middle_5 = Cabbage.objects.filter(부산=1, 배추중품=1, 년=2021, 월=5).values_list('도매가격', flat=True)[0]
-    middle_6 = Cabbage.objects.filter(부산=1, 배추중품=1 , 년=2021, 월=6).values_list('도매가격', flat=True)[0]
-    middle_7 = Cabbage.objects.filter(부산=1, 배추중품=1, 년=2021,월=7 ).values_list('도매가격', flat=True)[0]
-    middle_8 = Cabbage.objects.filter(부산=1, 배추중품=1, 년=2021, 월=8).values_list('도매가격', flat=True)[0]
+    # middle_6 = Cabbage.objects.filter(부산=1, 배추중품=1 , 년=2021, 월=6).values_list('도매가격', flat=True)[0]
+    # middle_7 = Cabbage.objects.filter(부산=1, 배추중품=1, 년=2021,월=7 ).values_list('도매가격', flat=True)[0]
+    # middle_8 = Cabbage.objects.filter(부산=1, 배추중품=1, 년=2021, 월=8).values_list('도매가격', flat=True)[0]
     middle_9 = Cabbage.objects.filter(부산=1, 배추중품=1 , 년=2021, 월=9).values_list('도매가격', flat=True)[0]
     middle_10 = Cabbage.objects.filter(부산=1, 배추중품=1, 년=2021, 월=10).values_list('도매가격', flat=True)[0]
     middle_11 = Cabbage.objects.filter(부산=1, 배추중품=1, 년=2021, 월=11).values_list('도매가격', flat=True)[0]
@@ -197,29 +196,29 @@ def daegu(request):
     
     high_1 = Cabbage.objects.filter(대구=1, 배추상품=1, 년=2021, 월=1).values_list('도매가격', flat=True)[0]
     high_2 = Cabbage.objects.filter(대구=1, 배추상품=1, 년=2021, 월=2).values_list('도매가격', flat=True)[0]
-    high_3 = Cabbage.objects.filter(대구=1, 배추상품=1 , 년=2021, 월=3).values_list('도매가격', flat=True)[0]
+    high_3 = Cabbage.objects.filter(대구=1, 배추상품=1, 년=2021, 월=3).values_list('도매가격', flat=True)[0]
     high_4 = Cabbage.objects.filter(대구=1, 배추상품=1, 년=2021, 월=4).values_list('도매가격', flat=True)[0]
     high_5 = Cabbage.objects.filter(대구=1, 배추상품=1, 년=2021, 월=5).values_list('도매가격', flat=True)[0]
-    high_6 = Cabbage.objects.filter(대구=1, 배추상품=1 , 년=2021, 지역='부산').values_list('도매가격', flat=True)[0]
-    high_7 = Cabbage.objects.filter(대구=1, 배추상품=1, 년=2021, ).values_list('도매가격', flat=True)[0]
-    high_8 = Cabbage.objects.filter(대구=1, 배추상품=1, 년=2021, 지역='부산').values_list('도매가격', flat=True)[0]
-    high_9 = Cabbage.objects.filter(대구=1, 배추상품=1 , 년=2021, 월=9).values_list('도매가격', flat=True)[0]
+    high_6 = Cabbage.objects.filter(대구=1, 배추상품=1, 년=2021, 월=6).values_list('도매가격', flat=True)[0]
+    high_7 = Cabbage.objects.filter(대구=1, 배추상품=1, 년=2021, 월=7).values_list('도매가격', flat=True)[0]
+    high_8 = Cabbage.objects.filter(대구=1, 배추상품=1, 년=2021, 월=8).values_list('도매가격', flat=True)[0]
+    high_9 = Cabbage.objects.filter(대구=1, 배추상품=1, 년=2021, 월=9).values_list('도매가격', flat=True)[0]
     high_10 = Cabbage.objects.filter(대구=1, 배추상품=1, 년=2021, 월=10).values_list('도매가격', flat=True)[0]
     high_11 = Cabbage.objects.filter(대구=1, 배추상품=1, 년=2021, 월=11).values_list('도매가격', flat=True)[0]
     high_12 = Cabbage.objects.filter(대구=1, 배추상품=1 , 년=2021, 월=12).values_list('도매가격', flat=True)[0]
     
     mean_1 = Cabbage.objects.filter(대구=1, 배추상중=1, 년=2021, 월=1).values_list('도매가격', flat=True)[0]
     mean_2 = Cabbage.objects.filter(대구=1, 배추상중=1, 년=2021, 월=2).values_list('도매가격', flat=True)[0]
-    mean_3 = Cabbage.objects.filter(대구=1, 배추상중=1 , 년=2021, 월=3).values_list('도매가격', flat=True)[0]
+    mean_3 = Cabbage.objects.filter(대구=1, 배추상중=1, 년=2021, 월=3).values_list('도매가격', flat=True)[0]
     mean_4 = Cabbage.objects.filter(대구=1, 배추상중=1, 년=2021, 월=4).values_list('도매가격', flat=True)[0]
     mean_5 = Cabbage.objects.filter(대구=1, 배추상중=1, 년=2021, 월=5).values_list('도매가격', flat=True)[0]
-    mean_6 = Cabbage.objects.filter(대구=1, 배추상중=1 , 년=2021, 지역='부산').values_list('도매가격', flat=True)[0]
-    mean_7 = Cabbage.objects.filter(대구=1, 배추상중=1, 년=2021, ).values_list('도매가격', flat=True)[0]
-    mean_8 = Cabbage.objects.filter(대구=1, 배추상중=1, 년=2021, 지역='부산').values_list('도매가격', flat=True)[0]
-    mean_9 = Cabbage.objects.filter(대구=1, 배추상중=1 , 년=2021, 월=9).values_list('도매가격', flat=True)[0]
+    mean_6 = Cabbage.objects.filter(대구=1, 배추상중=1, 년=2021, 월=6).values_list('도매가격', flat=True)[0]
+    mean_7 = Cabbage.objects.filter(대구=1, 배추상중=1, 년=2021, 월=7).values_list('도매가격', flat=True)[0]
+    mean_8 = Cabbage.objects.filter(대구=1, 배추상중=1, 년=2021, 월=8).values_list('도매가격', flat=True)[0]
+    mean_9 = Cabbage.objects.filter(대구=1, 배추상중=1, 년=2021, 월=9).values_list('도매가격', flat=True)[0]
     mean_10 = Cabbage.objects.filter(대구=1, 배추상중=1, 년=2021, 월=10).values_list('도매가격', flat=True)[0]
     mean_11 = Cabbage.objects.filter(대구=1, 배추상중=1, 년=2021, 월=11).values_list('도매가격', flat=True)[0]
-    mean_12 = Cabbage.objects.filter(대구=1, 배추상중=1 , 년=2021, 월=12).values_list('도매가격', flat=True)[0]
+    mean_12 = Cabbage.objects.filter(대구=1, 배추상중=1, 년=2021, 월=12).values_list('도매가격', flat=True)[0]
     context = {
         'high' : high, 'middle' : middle, 'mean' : mean,
         'high_1' : high_1, 'high_2' : high_2, 'high_3' : high_3, 'high_4' : high_4, 'high_5' : high_5, 'high_6' : high_6,
@@ -242,63 +241,5 @@ def gwangju(request):
     mean = Cabbage.objects.filter(광주=1, 배추상중=1 , 년=2021, 월=12).values_list('도매가격', flat=True)[0]
     context = {'high' : high, 'middle' : middle, 'mean' : mean}
     return render(request, 'CabbageApp/gwangju.html', context)
-    
-    
-def settings(request):
-    
-    Test.objects.all().delete()
-
-    if request.method == 'POST':
-        form6 = PopupForm6(request.POST, initial={'지역' : '부산', '면적': 6, '생산량': 771, '물가지수': 136, 
-        '평균기온':-1.5, '평균최고기온':2.842857 , '평균최저기온': -5.471429, '평균상대습도': 52.8, '월합강수량': 239.229, 
-        '총지수전년누계비': 10})
-        
-        form7 = PopupForm7(request.POST, initial={'면적': 6, '생산량': 771, '물가지수': 136,  
-        '평균기온':-1.5, '평균최고기온':2.842857 , '평균최저기온': -5.471429, '평균상대습도': 52.8, '월합강수량': 239.229, 
-        '총지수전년누계비': 10, '신선식품지수전년누계비':10})
-        
-        form8 = PopupForm8(request.POST, initial={'면적': 6, '생산량': 771, '물가지수': 136, 
-        '평균기온':-1.5, '평균최고기온':2.842857 , '평균최저기온': -5.471429, '평균상대습도': 52.8, '월합강수량': 239.229, 
-        '총지수전년누계비': 10, '신선식품지수전년누계비':10})
-        
-        지역 = Cab6.objects.values_list('지역', flat=True)[0]
-
-        
-        if form6.is_valid():
-            model = Cab6(지역=지역, 면적=form6.data['면적'], 생산량=form6.data['생산량'], 물가지수=form6.data['물가지수'],
-                        평균기온=form6.data['평균기온'], 평균최고기온=form6.data['평균최고기온'],
-                        평균최저기온=form6.data['평균최저기온'], 평균상대습도=form6.data['평균상대습도'], 
-                        월합강수량=form6.data['월합강수량'], 총지수전년누계비=form6.data['총지수전년누계비'])           
-            
-            model.objects.filter(id=2).update()
-            
-            context = {'form6' : form6, 'form7' : form7, 'form8' : form8}
-            return render(request, 'CabbageApp/popup.html', context) 
-                          
-        if form7.is_valid():
-            model = Cab7(지역=지역, 면적=form7.data['면적'], 생산량=form7.data['생산량'], 물가지수=form7.data['물가지수'],
-                        평균기온=form7.data['평균기온'], 평균최고기온=form7.data['평균최고기온'],
-                        평균최저기온=form7.data['평균최저기온'], 평균상대습도=form7.data['평균상대습도'], 
-                        월합강수량=form7.data['월합강수량'], 총지수전년누계비=form7.data['총지수전년누계비'])  
-            model.save()
-            context = {'form6' : form6, 'form7' : form7, 'form8' : form8}
-            return render(request, 'CabbageApp/popup.html', context) 
-        
-        if form8.is_valid():
-            model = Cab8(지역=지역, 면적=form8.data['면적'], 생산량=form8.data['생산량'], 물가지수=form8.data['물가지수'],
-                        평균기온=form8.data['평균기온'], 평균최고기온=form8.data['평균최고기온'],
-                        평균최저기온=form8.data['평균최저기온'], 평균상대습도=form8.data['평균상대습도'], 
-                        월합강수량=form8.data['월합강수량'], 총지수전년누계비=form8.data['총지수전년누계비'])
-            model.save()
-            context = {'form6' : form6, 'form7' : form7, 'form8' : form8}
-            return render(request, 'CabbageApp/popup.html', context) 
-            
-    else:
-        Test.objects.all().delete()
-        form6 = PopupForm6()
-        form7 = PopupForm7()
-        form8 = PopupForm8()
-        context = {'form6' : form6, 'form7' : form7, 'form8' : form8}
-        return render(request, 'CabbageApp/popup.html', context)
   
   
