@@ -41,6 +41,7 @@
                     <a class="inname">품질</a>
                     <a class="inname pricename">전월실제가격</a>
                     <a class="inname pricename">현월예측가격</a>
+                    <a class="inname pricename">익월예측가격</a>
                 </div>
                 <a class="chartname">가격예측그래프(1년간)</a>
             </li>
@@ -63,27 +64,30 @@
                 <ul class="items">
                     <li class="item">
                         <a class="in"> 평균 </a>
-                        <a class="in">{{mean}}원/kg</a>
-                        <a class="in"> {{default_mean}}원/kg</a>
+                        <a class="in inin"> {{mean}}원/kg </a>
+                        <a class="in inin"> {{current_month_mean}}원/kg </a>
+                        <a class="in inin"> {{next_month_mean}}원/kg </a>
                     </li>
                 </ul>
                 <ul class="items">
                     <li class="item">
                         <a class="in"> 상품 </a>
-                        <a class="in"> {{high}}원/kg </a>
-                        <a class="in"> {{default_high}}원/kg </a>
+                        <a class="in inin"> {{high}}원/kg </a>
+                        <a class="in inin"> {{current_month_high}}원/kg </a>
+                        <a class="in inin"> {{next_month_high}}원/kg </a>
                     </li>
                 </ul>
                 <ul class="items">
                     <li class="item">
                         <a class="in"> 중품 </a>
-                        <a class="in"> {{middle}}원/kg </a>
-                        <a class="in"> {{default_middle}}원/kg </a>
+                        <a class="in inin"> {{middle}}원/kg </a>
+                        <a class="in inin"> {{current_month_middle}}원/kg </a>
+                        <a class="in inin"> {{next_month_middle}}원/kg </a>
                     </li>
                 </ul>
             </div>
             <div class="chart">
-                <canvas class="cchart" id="canvas" width="680" height="420"></canvas>
+                <canvas class="cchart" id="canvas" width="590" height="420"></canvas>
                 {% comment %} <script type="text/javascript" src="{% static 'CabbageApp/js/script.js' %}"></script> {% endcomment %}
             </div>
         </div>

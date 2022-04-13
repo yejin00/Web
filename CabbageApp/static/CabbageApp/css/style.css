@@ -212,36 +212,36 @@ body {
 }
 
 .chart{
-    width: 780px;
+    width: 690px;
     height: 450px;
     background-color: lightgray;
     margin-left: 1%;
 }
 
 .numname{
-    width: 550px;
+    width: 650px;
 }
 
 .inname{
     justify-content: center;
     text-align: center;
     font-weight: bold;
-    margin-left: 15%;
+    margin-left: 5%;
 }
 
 .pricename{
-    margin-left: 11%;
+    margin-left: 10%;
 }
 
 .chartname{
-    width: 700px;
+    width: 600px;
     justify-content: center;
     text-align: center;
     font-weight: bold;
 }
 
 .items{
-    width: 500px;
+    width: 600px;
     height: 90px;
     margin: 10px;
     padding: 20px;
@@ -253,9 +253,13 @@ body {
     justify-content: center;
     text-align: center;
     font-weight: bold;
-    margin-left: 15%;
+    margin-left: 5%;
     margin-top: 5%;
     line-height: 90px;
+}
+
+.inin{
+    margin-left: 13%;
 }
 
 li{

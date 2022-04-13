@@ -183,7 +183,8 @@ def busan(request):
         context = {
         'high' : high, 'middle' : middle, 'mean' : mean,
         'high_list': high_list, 'mean_list': mean_list, 'middle_list' : middle_list,
-        'default_high': default_list[0], 'default_middle': default_list[3], 'default_mean': default_list[6]
+        'current_month_high': default_list[0], 'current_month_middle': default_list[3], 'current_month_mean': default_list[6],
+        'next_month_high': default_list[1], 'next_month_middle': default_list[4], 'next_month_mean': default_list[7],
         }
         return render(request, 'CabbageApp/busan.html', context)    
     
