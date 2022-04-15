@@ -1,0 +1,113 @@
+.pop1{
+    display: flex;
+}
+
+.git{
+    text-decoration-line : none;
+    height: 30px;
+    margin: 10px;
+    padding: 20px;
+    background-color: gray;
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+    width: 160px;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: large;
+}
+
+.git:hover{
+    background-color: lightgray;
+    color: black;
+}
+
+.title{
+    width:820px;
+    height: 30px;
+    margin: 10px;
+    padding: 20px;
+    background: #426AB2;
+    color: white;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: large;
+}
+.pli{
+    display: flex;
+}
+
+.name{
+    width: 1000px;
+}
+
+.inname{
+    justify-content: center;
+    text-align: center;
+    font-weight: bold;
+    margin-left: 15%;
+}
+
+.innname{
+    margin-left: 30%;
+}
+
+.content{
+    display: flex;
+}
+
+.form{
+    display: flex;
+}
+.coltitle,
+.june,
+.july,
+.august{
+    width: 230px;
+    height: 490px;
+    margin: 10px;
+    padding: 20px;
+    background-color: lightgray;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column; 
+}
+
+.coltitle{
+    width: 160px;
+    background-color: goldenrod;
+    color: white;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.colname{
+    text-align: center;
+    text-transform: uppercase;
+    margin-top: 31px;
+    font-size: large;
+}
+
+.name1{
+    margin-top: 10px;
+}
+
+.ip{
+    padding: 5px;
+    text-align: center;
+    text-transform: uppercase;
+    margin-top: 5px;
+}
+
+.closeBtn,
+.checkBtn{
+    margin: 5px;
+    padding: 10px;
+    width: 50px;
+    text-align: center;
+    background-color: gray;
+    color: white;
+    border-radius: 15px;
+    font-weight: bold;
+    float: right;
+}

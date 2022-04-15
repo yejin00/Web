@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'CabbageApp/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'CabbageApp/css/pstyle.css' %}">
     <title>배추 요인입력창</title>
     <script>
         function clickEvent(){
@@ -15,25 +15,55 @@
     </script>
 </head>
 <body>
-    <form action="{% url 'SettingsApp:busan'%}" method="POST"> 
-        {% csrf_token %}
-        <h2> 6월 </h2>
-        {% for field in form6 %}
-            {{ field.label }}
-            {{field}}
-        {% endfor %}
-        <h2> 7월 </h2>
-        {% for field in form7 %}
-            {{field}}
-        {% endfor %}
-        <h2> 8월 </h2>
-        {% for field in form8 %}
-            {{field}}
-        {% endfor %}
-        <div class="lastBtn">
-            <a class="closeBtn" onClick="window.close()">취소</a>
-            <input class="checkBtn" type="submit" onClick="clickEvent();" value="확인">
+    <div class = "pop1">
+        <a title="클릭하시면 요인 분석 과정을 보실 수 있습니다." class="git" href = "https://github.com/Crop-Forecasting-System/Info" target = "top" > 요인분석이유 </a> 
+        <ul class="title">
+            <li class="pli">
+                <div class="name">
+                    <a class="inname">6월</a>
+                    <a class="inname innname">7월</a>
+                    <a class="inname innname">8월</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="content">
+        <div class="coltitle">
+            <a class="colname name1">면적</a>
+            <a class="colname">생산량</a>
+            <a class="colname">물가지수</a>
+            <a class="colname">평균기온</a>
+            <a class="colname">월합강수량</a>
+            <a class="colname">평균최고기온</a>
+            <a class="colname">평균최저기온</a>
+            <a class="colname">평균상대습도</a>
+            <a class="colname">총지수전년누계비</a>
         </div>
-    </form>
+
+        <form action="{% url 'SettingsApp:busan'%}" method="POST"> 
+            <div class="form">
+                <div class="june">
+                    {% csrf_token %}
+                    {% for field in form6 %}
+                    <input class="ip" text={{field}}</input><br>
+                    {% endfor %}
+                </div>
+                <div class="july">
+                    {% for field in form7 %}
+                    <input class="ip" text={{field}}</input><br>
+                    {% endfor %} 
+                </div>
+                <div class="august">
+                    {% for field in form8 %}
+                    <input class="ip" text={{field}}</input><br>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="lastBtn">
+                <input class="closeBtn" type="submit" onClick="window.close();" value="취소">
+                <input class="checkBtn" type="submit" onClick="clickEvent();" value="확인">
+            </div>
+        </form>
+    </div>
 </body>
 </html>
